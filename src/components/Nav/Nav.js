@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginForm from '../LoginForm/LoginForm';
 
-export const Nav = ({ user }) => {
+const Nav = ({ user }) => {
   return (
     <nav>
     <h1>Bookify</h1>
@@ -11,3 +11,5 @@ export const Nav = ({ user }) => {
     </nav>
   )
 }
+
+export default Nav;

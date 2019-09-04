@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../../styles/App.css';
-import Nav from './components/Nav';
+import Nav from '../Nav/Nav';
 
 class App extends Component {
   constructor() {
@@ -12,6 +12,7 @@ class App extends Component {
   }
 
   render() {
+    const { user } = this.state;
     return (
       <main className='app'>
         <Nav user={user} />
