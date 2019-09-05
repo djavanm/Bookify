@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../styles/App.css';
 import Nav from '../Nav/Nav';
 import BookContainer from '../BookContainer/BookContainer';
-import SearchForm from '../SearchForm/SearchForm';
+import SearchForm from '../../containers/SearchForm/SearchForm';
 import { fetchOnLoad } from '../../util/apiCalls';
 
 class App extends Component {

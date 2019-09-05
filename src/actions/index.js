@@ -1,4 +1,4 @@
-export const search = foundBooks => ({
+export const setBooks = foundBooks => ({
   type: 'FOUND_BOOKS',
   foundBooks
 });
