@@ -1,24 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
 import '../../styles/App.css';
+import Nav from '../Nav/Nav';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      books: [],
+      user: null
+    }
+  }
+
+  render() {
+    const { user } = this.state;
+    return (
+      <main className='app'>
+        <Nav user={user} />
+      </main>
+    )
+  }
 }
 
 export default App;
