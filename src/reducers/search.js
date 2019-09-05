@@ -1,4 +1,4 @@
-export const queriedBooks = (state = [], action) => {
+export const currentBooks = (state = [], action) => {
   switch (action.type) {
     case 'FOUND_BOOKS':
       return [...action.foundBooks]
