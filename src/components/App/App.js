@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../../styles/App.css';
 import Nav from '../Nav/Nav';
+import BookContainer from '../BookContainer/BookContainer'
 
 class App extends Component {
   constructor() {
@@ -16,6 +17,7 @@ class App extends Component {
     return (
       <main className='app'>
         <Nav user={user} />
+        <BookContainer />
       </main>
     )
   }
