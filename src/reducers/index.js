@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { queriedBooks } from './search';
+import { currentBooks } from './search';
 
 export const rootReducer = combineReducers({
-  queriedBooks
+  currentBooks
 });

@@ -1,10 +1,21 @@
 import React from 'react';
 import Book from '../Book/Book'
+import { connect } from 'react-redux';
 
-const BookContainer = () => {
+const BookContainer = ({books}) => {
+  const displayedBooks = books.map(book => {
+    return <Book data={book} key={book.collectionId}/>
+  })
+
   return (
-    <Book />
+    <section className="book-container">
+      {displayedBooks}
+    </section>
   )
 }
 
-export default BookContainer;
+export const mapStateToProps = state => ({
+  books: state.currentBooks
+})
+
+export default connect(mapStateToProps)(BookContainer);
