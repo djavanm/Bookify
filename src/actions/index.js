@@ -1,4 +1,4 @@
-export const search = query => ({
+export const search = foundBooks => ({
   type: 'SEARCH_BOOKS',
-  query
+  foundBooks
 });
