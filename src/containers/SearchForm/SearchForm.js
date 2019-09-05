@@ -23,6 +23,9 @@ class SearchForm extends Component {
     getBooks(searchInput)
       .then(books => setBooks(books.results))
       .catch(error => console.log(error))
+    this.setState({
+      searchInput: ''
+    })
   }
 
   render() {

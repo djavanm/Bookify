@@ -8,7 +8,7 @@ const BookContainer = ({books}) => {
   })
 
   return (
-    <section>
+    <section className="book-container">
       {displayedBooks}
     </section>
   )

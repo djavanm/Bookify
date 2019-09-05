@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../../styles/App.css';
 import Nav from '../../components/Nav/Nav';
 import BookContainer from '../../components/BookContainer/BookContainer';
 import SearchForm from '../SearchForm/SearchForm';
