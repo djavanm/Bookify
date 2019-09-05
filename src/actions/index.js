@@ -1,4 +1,4 @@
 export const search = foundBooks => ({
-  type: 'SEARCH_BOOKS',
+  type: 'FOUND_BOOKS',
   foundBooks
 });

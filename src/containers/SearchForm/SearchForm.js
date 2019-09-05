@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { search } from '../actions';
 
 class SearchForm extends Component {
   constructor() {
@@ -12,13 +15,17 @@ class SearchForm extends Component {
     this.setState({[e.target.name]: [e.target.value]});
   }
 
+  handleSearch = (e) => {
+    
+  }
+
   render() {
     const { searchInput } = this.state;
-    
+
     return (
       <form>
-        <input 
-        type="text" 
+        <input
+        type="text"
         name="searchInput"
         value={searchInput}
         onChange={this.handleChange}/>
@@ -28,4 +35,8 @@ class SearchForm extends Component {
   }
 }
 
-export default SearchForm;
+export const mapDispatchToProps = dispatch => (
+  bindActionCreators({ })
+)
+
+export default connect(null, mapDispatchToProps)(SearchForm);
