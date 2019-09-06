@@ -10,12 +10,11 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 
 class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      user: null
-    }
-  }
+  // constructor() {
+  //   super()
+  //   this.state = {
+  //   }
+  // }
 
   componentDidMount() {
     fetchOnLoad()
@@ -24,11 +23,11 @@ class App extends Component {
   }
 
   render() {
-    const { user } = this.state;
+    const { currentUser } = this.props;
     return (
       <main className='app'>
       <Route exact path='/login' render={() => <LoginForm/>} />
-      <Route exact path='/' render={() => <Nav user={user} />} />
+      <Route exact path='/' render={() => <Nav currentUser={currentUser}/>} />
       <Route exact path='/' render={() => <SearchForm /> } />
       <Route exact path='/' render={() => <BookContainer /> } />
       </main>
@@ -36,8 +35,12 @@ class App extends Component {
   }
 }
 
+export const mapStateToProps = state => ({
+  currentUser: state.currentUser
+});
+
 export const mapDispatchToProps = dispatch => (
   bindActionCreators({ setBooks }, dispatch)
-)
+);
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
