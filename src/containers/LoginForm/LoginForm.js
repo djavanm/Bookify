@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { createUser } from '../../util/apiCalls';
 
 
 class LoginForm extends Component {
@@ -18,6 +19,19 @@ class LoginForm extends Component {
 
   handleChange = (e) => {
     this.setState({[e.target.name]: e.target.value})
+  }
+
+  submitUser = (e) => {
+    const { name, email, password } = this.state;
+    e.preventDefault();
+    const newUser = {
+      name,
+      email,
+      password
+    }
+    createUser(newUser)
+      .then(data => console.log(data))
+      .catch(error => console.log(error))   
   }
 
   render() {
@@ -61,7 +75,7 @@ class LoginForm extends Component {
         name="password"
         value={password}
         onChange={this.handleChange} />
-        <button>Submit</button>
+        <button onClick={this.submitUser}>Submit</button>
       </form>}
       </div>
     )
