@@ -1,11 +1,11 @@
 import React from 'react';
-import LoginForm from '../LoginForm/LoginForm';
+import { Link } from 'react-router-dom';
 
 const Nav = ({ user }) => {
   return (
     <nav>
     <h1>Bookify</h1>
-    { !user && <button> SIGN IN </button> }
+    { !user && <Link to='/login'><button> SIGN IN </button></Link> }
     { user && <button> Show Favorites </button> }
     { user && <h2> { user.name } </h2> }
     </nav>
