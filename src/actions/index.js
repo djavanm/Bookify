@@ -40,3 +40,8 @@ export const setGenres = favorites => ({
   type: 'SET_GENRES',
   favorites
 })
+
+export const addGenre = genre => ({
+  type: 'ADD_GENRE',
+  genre
+})
