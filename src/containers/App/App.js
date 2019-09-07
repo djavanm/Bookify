@@ -7,7 +7,7 @@ import { fetchOnLoad } from '../../util/apiCalls';
 import { bindActionCreators } from 'redux';
 import { setBooks } from '../../actions';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 class App extends Component {
   // constructor() {
@@ -26,7 +26,7 @@ class App extends Component {
     const { currentUser } = this.props;
     return (
       <main className='app'>
-      <Route exact path='/login' render={() => <LoginForm/>} />
+      <Route exact path='/login' render={() => currentUser ? <Redirect to='/' /> : <LoginForm /> } />
       <Route exact path='/' render={() => <Nav currentUser={currentUser}/>} />
       <Route exact path='/' render={() => <SearchForm /> } />
       <Route exact path='/' render={() => <BookContainer /> } />

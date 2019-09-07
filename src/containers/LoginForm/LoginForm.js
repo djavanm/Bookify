@@ -79,7 +79,7 @@ class LoginForm extends Component {
         name="password"
         value={password}
         onChange={this.handleChange} />
-        <button onClick={this.submitUser}>Submit</button></Link>
+        <button onClick={this.submitUser}>Submit</button>
       </form>}
       </div>
     )
