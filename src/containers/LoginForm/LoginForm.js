@@ -3,7 +3,6 @@ import { createUser } from '../../util/apiCalls';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { setUser } from '../../actions';
-import { Link } from 'react-router-dom';
 
 class LoginForm extends Component {
   constructor() {
@@ -12,7 +11,8 @@ class LoginForm extends Component {
       existingUser: true,
       name: '',
       email: '',
-      password: ''
+      password: '',
+      error: ''
     }
   };
 
@@ -33,9 +33,10 @@ class LoginForm extends Component {
       email,
       password
     };
+    this.clearFields();
     createUser(newUser, 'users')
-      .then(data => setUser(data))
-      .catch(error => console.log(error))
+      .then(data => data.id ? setUser(data) : null )
+      .catch(error => this.setState({error: 'Email has already been used'}))
   };
 
   loginUser = (e) => {
@@ -46,18 +47,24 @@ class LoginForm extends Component {
       email,
       password
     };
+    this.clearFields();
     createUser(newUser, 'login')
-      .then(data => setUser(data))
-      .catch(error => console.log(error))
+      .then(data => data.id ? setUser(data) : null )
+      .catch(error => this.setState({error: 'Email and password do not match'}))
+  }
+
+  clearFields = () => {
+    this.setState({ name: '', email: '', password: ''})
   }
 
   render() {
-    const { existingUser, email, name, password } = this.state;
+    const { existingUser, email, name, password, error } = this.state;
     const btnText = existingUser ? 'Sign up' : 'Login'
     return (
       <div>
         <button onClick={this.toggleExisting}>{btnText}</button>
-      {existingUser &&
+        { error && <p>{error}</p> }
+        {existingUser &&
       <form>
         <input
         type="text"

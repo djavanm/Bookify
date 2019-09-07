@@ -28,7 +28,7 @@ export const createUser = (newUser, route) => {
       'Content-Type': 'application/json'
     }
   }
-  
+
   return fetch(`http://localhost:3001/api/v1/${route}`, options)
     .then(response => {
       if (!response.ok) {
@@ -36,5 +36,5 @@ export const createUser = (newUser, route) => {
       }
       return response.json()
     })
-    .catch(error => Error(error.message))
+    .catch(error => console.log(error.message));
 }
