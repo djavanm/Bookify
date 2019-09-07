@@ -33,10 +33,23 @@ class LoginForm extends Component {
       email,
       password
     };
-    createUser(newUser)
+    createUser(newUser, 'users')
       .then(data => setUser(data))
       .catch(error => console.log(error))
   };
+
+  loginUser = (e) => {
+    e.preventDefault();
+    const { setUser } = this.props;
+    const { email, password } = this.state;
+    const newUser = {
+      email,
+      password
+    };
+    createUser(newUser, 'login')
+      .then(data => setUser(data))
+      .catch(error => console.log(error))
+  }
 
   render() {
     const { existingUser, email, name, password } = this.state;
@@ -57,7 +70,7 @@ class LoginForm extends Component {
         name="password"
         value={password}
         onChange={this.handleChange}/>
-        <button>Login</button>
+        <button onClick={this.loginUser}>Login</button>
       </form>}
       {!existingUser &&
       <form>
