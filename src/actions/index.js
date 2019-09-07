@@ -26,3 +26,12 @@ export const removeFavorite = id => ({
   type: 'REMOVE_FAVORITE',
   id
 })
+
+export const showAllFilter = () => ({
+  type: 'SHOW_ALL'
+})
+
+export const showGenreFilter = genreName => ({
+  type: 'SHOW_GENRE',
+  genreName
+})

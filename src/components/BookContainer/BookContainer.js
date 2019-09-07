@@ -2,6 +2,11 @@ import React from 'react';
 import Book from '../../containers/Book/Book'
 import { connect } from 'react-redux';
 
+const getFilteredFavorites = (favorites, genre) => {
+  return genre ? favorites.filter(fav => fav.primary_genre_name) 
+  : favorites;
+}
+
 const BookContainer = ({all, books, favorites, toggleFavorite}) => {
   const data = all ? books : favorites;
   const displayedBooks = data.map(book => {
