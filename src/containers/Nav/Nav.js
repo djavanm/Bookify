@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logoutUser } from '../../actions';
+import { logoutUser, showGenreFilter } from '../../actions';
 import { bindActionCreators } from 'redux';
 
 const Nav = ({ currentUser, logoutUser, home }) => {
@@ -18,7 +18,7 @@ const Nav = ({ currentUser, logoutUser, home }) => {
 }
 
 export const mapDispatchToProps = dispatch => (
-  bindActionCreators({ logoutUser }, dispatch)
+  bindActionCreators({ logoutUser, showGenreFilter }, dispatch)
 );
 
 export default connect(null, mapDispatchToProps)(Nav);
