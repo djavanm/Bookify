@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { createUser } from '../../util/apiCalls';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { setUser, setFavorites } from '../../actions';
+import { setUser, setFavorites, setGenres } from '../../actions';
 import { getFavorites } from '../../util/apiCalls';
+
 
 class LoginForm extends Component {
   constructor() {
@@ -27,7 +28,7 @@ class LoginForm extends Component {
 
   submitUser = (e) => {
     e.preventDefault();
-    const { setUser, setFavorites } = this.props;
+    const { setUser, setFavorites, setGenres } = this.props;
     const { name, email, password } = this.state;
     const newUser = {
       name,
@@ -39,12 +40,13 @@ class LoginForm extends Component {
       .then(data => data.id ? setUser(data) : null)
       .then(data => data.foundUser.id ? getFavorites(data.foundUser.id) : null)
       .then(data => setFavorites(data.favorites))
+      .then(data => setGenres(data.foundFavorites))
       .catch(error => this.setState({error: 'Email has already been used'}))
   };
 
   loginUser = (e) => {
     e.preventDefault();
-    const { setUser, setFavorites } = this.props;
+    const { setUser, setFavorites, setGenres } = this.props;
     const { email, password } = this.state;
     const newUser = {
       email,
@@ -55,6 +57,7 @@ class LoginForm extends Component {
       .then(data => data.id ? setUser(data) : null )
       .then(data => data.foundUser.id ? getFavorites(data.foundUser.id) : null)
       .then(data => setFavorites(data.favorites))
+      .then(data => setGenres(data.foundFavorites))
       .catch(error => this.setState({error: 'Email and password do not match'}))
   }
 
@@ -111,8 +114,9 @@ class LoginForm extends Component {
   }
 };
 
+
 export const mapDispatchToProps = dispatch => (
-  bindActionCreators({ setUser, setFavorites }, dispatch)
+  bindActionCreators({ setUser, setFavorites, setGenres }, dispatch)
 );
 
 export default connect(null, mapDispatchToProps)(LoginForm);

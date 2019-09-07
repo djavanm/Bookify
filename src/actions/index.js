@@ -35,3 +35,8 @@ export const showGenreFilter = genreName => ({
   type: 'SHOW_GENRE',
   genreName
 })
+
+export const setGenres = favorites => ({
+  type: 'SET_GENRES',
+  favorites
+})
