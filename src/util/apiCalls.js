@@ -73,7 +73,6 @@ export const postFavorite = (book, id) => {
       'Content-Type': 'application/json'
     }
   }
-  console.log('options', options)
   return fetch(`http://localhost:3001/api/v1/users/${id}/bookfavorites`, options)
     .then(response => {
       if (!response.ok) {
@@ -83,3 +82,22 @@ export const postFavorite = (book, id) => {
     })
     .catch(error => console.log(error.message));
 }
+
+export const deleteFavorite = (id, bookId) => {
+  const options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  return fetch(`http://localhost:3001/api/v1/users/${id}/bookfavorites/${bookId}`, options)
+    .then(() => fetch(`http://localhost:3001/api/v1/users/${id}/bookfavorites/`))
+    .then(response => {
+      if (!response.ok) {
+        throw Error('ERROR')
+      }
+      return response.json()
+    })
+    .catch(error => console.log(error.message));
+}
+
