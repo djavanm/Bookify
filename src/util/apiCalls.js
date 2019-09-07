@@ -20,7 +20,7 @@ export const getBooks = (query) => {
     .catch(error => Error(error.message))
 }
 
-export const createUser = (newUser) => {
+export const createUser = (newUser, route) => {
   const options = {
     method: 'POST',
     body: JSON.stringify(newUser),
@@ -29,7 +29,7 @@ export const createUser = (newUser) => {
     }
   }
   
-  return fetch('http://localhost:3001/api/v1/users', options)
+  return fetch(`http://localhost:3001/api/v1/${route}`, options)
     .then(response => {
       if (!response.ok) {
         throw Error('ERROR')
