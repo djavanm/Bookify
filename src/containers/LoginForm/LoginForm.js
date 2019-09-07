@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { createUser } from '../../util/apiCalls';
-
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { setUser } from '../../actions';
+import { Link } from 'react-router-dom';
 
 class LoginForm extends Component {
   constructor() {
@@ -11,28 +14,29 @@ class LoginForm extends Component {
       email: '',
       password: ''
     }
-  }
+  };
 
   toggleExisting = () => {
     this.setState({existingUser: !this.state.existingUser})
-  }
+  };
 
   handleChange = (e) => {
     this.setState({[e.target.name]: e.target.value})
-  }
+  };
 
   submitUser = (e) => {
-    const { name, email, password } = this.state;
     e.preventDefault();
+    const { setUser } = this.props;
+    const { name, email, password } = this.state;
     const newUser = {
       name,
       email,
       password
-    }
+    };
     createUser(newUser)
-      .then(data => console.log(data))
-      .catch(error => console.log(error))   
-  }
+      .then(data => setUser(data))
+      .catch(error => console.log(error))
+  };
 
   render() {
     const { existingUser, email, name, password } = this.state;
@@ -42,13 +46,13 @@ class LoginForm extends Component {
         <button onClick={this.toggleExisting}>{btnText}</button>
       {existingUser &&
       <form>
-        <input 
-        type="text" 
+        <input
+        type="text"
         placeholder="Email"
         name="email"
         value={email}
         onChange={this.handleChange} />
-        <input 
+        <input
         type="password" placeholder="Password"
         name="password"
         value={password}
@@ -57,29 +61,33 @@ class LoginForm extends Component {
       </form>}
       {!existingUser &&
       <form>
-        <input 
-        type="text" 
+        <input
+        type="text"
         placeholder="Name"
         name="name"
         value={name}
         onChange={this.handleChange} />
-        <input 
-        type="text" 
+        <input
+        type="text"
         placeholder="Email"
         name="email"
-        value={email} 
+        value={email}
         onChange={this.handleChange} />
-        <input 
-        type="password" 
+        <input
+        type="password"
         placeholder="Create a Password"
         name="password"
         value={password}
         onChange={this.handleChange} />
-        <button onClick={this.submitUser}>Submit</button>
+        <button onClick={this.submitUser}>Submit</button></Link>
       </form>}
       </div>
     )
   }
-}
+};
 
-export default LoginForm;
+export const mapDispatchToProps = dispatch => (
+  bindActionCreators({ setUser }, dispatch)
+);
+
+export default connect(null, mapDispatchToProps)(LoginForm);
