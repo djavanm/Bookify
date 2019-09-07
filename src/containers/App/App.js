@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Nav from '../../components/Nav/Nav';
+import Nav from '../../containers/Nav/Nav';
 import BookContainer from '../../components/BookContainer/BookContainer';
 import SearchForm from '../SearchForm/SearchForm';
 import LoginForm from '../LoginForm/LoginForm';
@@ -10,11 +10,6 @@ import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 
 class App extends Component {
-  // constructor() {
-  //   super()
-  //   this.state = {
-  //   }
-  // }
 
   componentDidMount() {
     fetchOnLoad()
