@@ -64,3 +64,22 @@ export const getFavorites = (userId) => {
     })
     .catch(error => console.log(error.message));
 }
+
+export const postFavorite = (book, id) => {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(book),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  console.log('options', options)
+  return fetch(`http://localhost:3001/api/v1/users/${id}/bookfavorites`, options)
+    .then(response => {
+      if (!response.ok) {
+        throw Error('ERROR')
+      }
+      return response.json()
+    })
+    .catch(error => console.log(error.message));
+}

@@ -7,7 +7,7 @@ const Book = ({data, toggleFavorite, isFavorite}) => {
       <img src={artwork_url} alt={`Cover for ${book_name}`} />
       <p>{author_name}</p>
       <p>{book_name}</p>
-      <button onClick={() => toggleFavorite(book_id, isFavorite)}>Fav</button>
+      <button onClick={() => toggleFavorite(data, isFavorite)}>Fav</button>
     </article>
   )
 }

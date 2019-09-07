@@ -3,9 +3,9 @@ import Nav from '../../containers/Nav/Nav';
 import BookContainer from '../../components/BookContainer/BookContainer';
 import SearchForm from '../SearchForm/SearchForm';
 import LoginForm from '../LoginForm/LoginForm';
-import { fetchOnLoad } from '../../util/apiCalls';
+import { fetchOnLoad, postFavorite} from '../../util/apiCalls';
 import { bindActionCreators } from 'redux';
-import { setBooks } from '../../actions';
+import { setBooks, setFavorites, addFavorite } from '../../actions';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 
@@ -17,9 +17,13 @@ class App extends Component {
       .catch(error => console.log(error))
   }
 
-  toggleFavorite = (id, bool) => {
-    // bool ? deleteFavorite(id) : addFavorite(id);
-    console.log(bool);
+  toggleFavorite = (book, bool) => {
+    const { currentUser, addFavorite } = this.props;
+    if(!bool) {
+      postFavorite(book, currentUser.id)
+        .then(data => addFavorite(data))
+        .catch(error => console.log(error))
+    }
   }
 
   render() {
@@ -41,7 +45,7 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch => (
-  bindActionCreators({ setBooks }, dispatch)
+  bindActionCreators({ setBooks, addFavorite }, dispatch)
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
