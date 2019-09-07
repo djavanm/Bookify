@@ -7,6 +7,8 @@ export const genres = (state = [], action) => {
         }
         return acc;
       }, [])
+    case 'ADD_GENRE':
+      return state.includes(action.genre) ? state : [...state, action.genre];
     default:
       return state;
   }
