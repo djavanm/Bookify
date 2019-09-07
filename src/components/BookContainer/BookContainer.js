@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 const BookContainer = ({books, toggleFavorite, favorites}) => {
   const displayedBooks = books.map(book => {
-    let bool = favorites.map(favorite => favorite.collectionId).includes(book.collectionId);
-    return <Book data={book} key={book.collectionId} toggleFavorite={toggleFavorite} isFavorite={bool}/>
+    let bool = favorites.map(favorite => favorite.book_id).includes(book.book_id);
+    return <Book data={book} key={book.book_id} toggleFavorite={toggleFavorite} isFavorite={bool}/>
   })
 
   return (

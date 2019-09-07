@@ -6,6 +6,7 @@ export const fetchOnLoad = () => {
       }
       return response.json()
     })
+    .then(data => cleanBooks(data.results))
     .catch(error => Error(error.message))
 }
 
@@ -17,7 +18,22 @@ export const getBooks = (query) => {
       }
       return response.json()
     })
+    .then(data => cleanBooks(data.results))
     .catch(error => Error(error.message))
+}
+
+export const cleanBooks = bookData => {
+  return bookData.map(book => {
+    return {
+      book_id: book.collectionId,
+      author_name: book.artistName,
+      book_name: book.collectionName,
+      artwork_url: book.artworkUrl100,
+      release_date: book.releaseDate,
+      description: book.description,
+      primary_genre_name: book.primaryGenreName
+    }
+  })
 }
 
 export const createUser = (newUser, route) => {
@@ -28,7 +44,6 @@ export const createUser = (newUser, route) => {
       'Content-Type': 'application/json'
     }
   }
-
   return fetch(`http://localhost:3001/api/v1/${route}`, options)
     .then(response => {
       if (!response.ok) {

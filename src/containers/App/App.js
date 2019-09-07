@@ -13,12 +13,12 @@ class App extends Component {
 
   componentDidMount() {
     fetchOnLoad()
-      .then(data => this.props.setBooks(data.results))
+      .then(data => this.props.setBooks(data))
       .catch(error => console.log(error))
   }
 
-  toggleFavorite = bool => {
-    bool ? deleteFavorite : addFavorite;
+  toggleFavorite = (id, bool) => {
+    // bool ? deleteFavorite(id) : addFavorite(id);
     console.log(bool);
   }
 
@@ -36,7 +36,8 @@ class App extends Component {
 }
 
 export const mapStateToProps = state => ({
-  currentUser: state.currentUser
+  currentUser: state.currentUser,
+  favorites: state.favorites
 });
 
 export const mapDispatchToProps = dispatch => (
