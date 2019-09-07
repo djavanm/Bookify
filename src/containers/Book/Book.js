@@ -5,8 +5,9 @@ import { connect } from 'react-redux';
 
 const Book = ({currentUser, data, toggleFavorite, favorites}) => {
   const { author_name, book_name, artwork_url, description, release_date, book_id } = data;
-  let isFavorite = favorites.map(favorite => favorite.book_id).includes(book_id);
-  const favoriteBtn = currentUser ? <button onClick={() => toggleFavorite(data, isFavorite)}>Fav</button> : <Link to='/login'><button>Fav</button></Link> 
+  const isFavorite = favorites.map(favorite => favorite.book_id).includes(book_id);
+  const btn = isFavorite ? 'btn-active': 'btn'
+  const favoriteBtn = currentUser ? <button className={btn} onClick={() => toggleFavorite(data, isFavorite)}>Fav</button> : <Link to='/login'><button>Fav</button></Link>
   return (
     <article className='book'>
       <img src={artwork_url} alt={`Cover for ${book_name}`} />
