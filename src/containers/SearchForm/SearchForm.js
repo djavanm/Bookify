@@ -21,7 +21,7 @@ class SearchForm extends Component {
     const { setBooks } = this.props;
     e.preventDefault();
     getBooks(searchInput)
-      .then(books => setBooks(books.results))
+      .then(books => setBooks(books))
       .catch(error => console.log(error))
     this.setState({
       searchInput: ''

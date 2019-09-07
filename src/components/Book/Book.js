@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Book = ({data}) => {
-  const { artistName, collectionName, artworkUrl100, description, releaseDate } = data
+const Book = ({data, toggleFavorite, isFavorite}) => {
+  const { author_name, book_name, artwork_url, description, release_date, book_id } = data;
   return (
     <article className='book'>
-      <img src={artworkUrl100} alt={`Cover for ${collectionName}`} />
-      <p>{artistName}</p>
-      <p>{collectionName}</p>
-      <button>Fav</button>
+      <img src={artwork_url} alt={`Cover for ${book_name}`} />
+      <p>{author_name}</p>
+      <p>{book_name}</p>
+      <button onClick={() => toggleFavorite(data, isFavorite)}>Fav</button>
     </article>
   )
 }
