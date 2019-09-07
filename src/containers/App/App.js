@@ -37,7 +37,9 @@ class App extends Component {
       <Route exact path='/login' render={() => currentUser ? <Redirect to='/' /> : <LoginForm /> } />
       <Route exact path='/' render={() => <Nav currentUser={currentUser}/>} />
       <Route exact path='/' render={() => <SearchForm /> } />
-      <Route exact path='/' render={() => <BookContainer toggleFavorite={this.toggleFavorite} /> } />
+      <Route exact path='/' render={() => <BookContainer all={true} toggleFavorite={this.toggleFavorite} /> } />
+      <Route exact path='/my-collection' render={() => <Nav home={true} currentUser={currentUser}/>} />
+      <Route exact path='/my-collection' render={() => <BookContainer all={false} toggleFavorite={this.toggleFavorite} /> } />
       </main>
     )
   }
