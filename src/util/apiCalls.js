@@ -38,3 +38,14 @@ export const createUser = (newUser, route) => {
     })
     .catch(error => console.log(error.message));
 }
+
+export const getFavorites = (userId) => {
+  return fetch(`http://localhost:3001/api/v1/users/${userId}/bookfavorites`)
+    .then(response => {
+      if (!response.ok) {
+        throw Error('ERROR')
+      }
+      return response.json()
+    })
+    .catch(error => console.log(error.message));
+}
