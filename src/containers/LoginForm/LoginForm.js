@@ -3,6 +3,7 @@ import { createUser } from '../../util/apiCalls';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { setUser } from '../../actions';
+import { getFavorites } from '../../util/apiCalls'
 
 class LoginForm extends Component {
   constructor() {
@@ -35,7 +36,8 @@ class LoginForm extends Component {
     };
     this.clearFields();
     createUser(newUser, 'users')
-      .then(data => data.id ? setUser(data) : null )
+      .then(data => data.id ? setUser(data) : null)
+      .then(data => data.foundUser.id ? getFavorites(data.foundUser.id) : null)
       .catch(error => this.setState({error: 'Email has already been used'}))
   };
 
@@ -50,6 +52,8 @@ class LoginForm extends Component {
     this.clearFields();
     createUser(newUser, 'login')
       .then(data => data.id ? setUser(data) : null )
+      .then(data => data.foundUser.id ? getFavorites(data.foundUser.id) : null)
+      .then(data => console.log(data))
       .catch(error => this.setState({error: 'Email and password do not match'}))
   }
 
