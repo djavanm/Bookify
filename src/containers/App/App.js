@@ -17,6 +17,11 @@ class App extends Component {
       .catch(error => console.log(error))
   }
 
+  toggleFavorite = bool => {
+    bool ? deleteFavorite : addFavorite;
+    console.log(bool);
+  }
+
   render() {
     const { currentUser } = this.props;
     return (
@@ -24,7 +29,7 @@ class App extends Component {
       <Route exact path='/login' render={() => currentUser ? <Redirect to='/' /> : <LoginForm /> } />
       <Route exact path='/' render={() => <Nav currentUser={currentUser}/>} />
       <Route exact path='/' render={() => <SearchForm /> } />
-      <Route exact path='/' render={() => <BookContainer /> } />
+      <Route exact path='/' render={() => <BookContainer toggleFavorite={this.toggleFavorite}/> } />
       </main>
     )
   }

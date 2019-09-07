@@ -2,9 +2,10 @@ import React from 'react';
 import Book from '../Book/Book'
 import { connect } from 'react-redux';
 
-const BookContainer = ({books}) => {
+const BookContainer = ({books, toggleFavorite, favorites}) => {
   const displayedBooks = books.map(book => {
-    return <Book data={book} key={book.collectionId}/>
+    let bool = favorites.map(favorite => favorite.collectionId).includes(book.collectionId);
+    return <Book data={book} key={book.collectionId} toggleFavorite={toggleFavorite} isFavorite={bool}/>
   })
 
   return (
@@ -15,7 +16,8 @@ const BookContainer = ({books}) => {
 }
 
 export const mapStateToProps = state => ({
-  books: state.currentBooks
+  books: state.currentBooks,
+  favorites: state.favorites
 })
 
 export default connect(mapStateToProps)(BookContainer);
