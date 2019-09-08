@@ -116,4 +116,64 @@ describe('actions', () => {
 
     expect(result).toEqual(expectedAction);
   });
+
+  it('should have a type of SHOW_START', () => {
+    const mockSearchFilter = {
+      start: 0,
+      end: 10,
+      length: 42
+    };
+    const expectedAction = {
+      type: 'SHOW_START',
+      current: {
+        start: 0,
+        end: 10,
+        length: 42
+      }
+    };
+
+    const result = actions.showStart(mockSearchFilter);
+
+    expect(result).toEqual(expectedAction);
+  });
+
+  it('should have a type of SHOW_NEXT', () => {
+    const mockSearchFilter = {
+      start: 0,
+      end: 10,
+      length: 42
+    };
+    const expectedAction = {
+      type: 'SHOW_NEXT',
+      current: {
+        start: 0,
+        end: 10,
+        length: 42
+      }
+    };
+
+    const result = actions.showNext(mockSearchFilter);
+
+    expect(result).toEqual(expectedAction);
+  });
+
+  it('should have a type of SHOW_PREVIOUS', () => {
+    const mockSearchFilter = {
+      start: 0,
+      end: 10,
+      length: 42
+    };
+    const expectedAction = {
+      type: 'SHOW_PREVIOUS',
+      current: {
+        start: 0,
+        end: 10,
+        length: 42
+      }
+    };
+
+    const result = actions.showPrevious(mockSearchFilter);
+
+    expect(result).toEqual(expectedAction);
+  });
 });
