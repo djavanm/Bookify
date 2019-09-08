@@ -46,8 +46,9 @@ export const addGenre = genre => ({
   genre
 })
 
-export const showStart = () => ({
-  type: 'SHOW_START'
+export const showStart = current => ({
+  type: 'SHOW_START',
+  current
 })
 
 export const showNext = current => ({
