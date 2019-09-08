@@ -18,10 +18,12 @@ const BookContainer = ({all, books, favorites, toggleFavorite, searchFilter, sho
   const displayedBooks = data.map(book => {
     return <Book data={book} key={book.book_id} toggleFavorite={toggleFavorite} />
   })
+  const showPrevBool = searchFilter.start === 0;
+  const showNextBool = (searchFilter.length - searchFilter.start) < 10;
   return (
     <section>
-      <button onClick={() => showPrevious(searchFilter)}>Show Prev</button>
-      <button onClick={() => showNext(searchFilter)}>Show Next</button>
+      <button onClick={() => showPrevious(searchFilter)} disabled={showPrevBool}>Show Prev</button>
+      <button onClick={() => showNext(searchFilter)} disabled={showNextBool}>Show Next</button>
       <section className="book-container">
         {displayedBooks}
       </section>

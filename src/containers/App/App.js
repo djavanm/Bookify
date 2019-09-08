@@ -6,20 +6,22 @@ import LoginForm from '../LoginForm/LoginForm';
 import BookDetails from '../../components/BookDetails/BookDetails';
 import { fetchOnLoad, postFavorite, deleteFavorite} from '../../util/apiCalls';
 import { bindActionCreators } from 'redux';
-import { setBooks, addFavorite, setFavorites, setGenres, addGenre } from '../../actions';
+import { setBooks, addFavorite, setFavorites, setGenres, addGenre, showStart } from '../../actions';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 
 class App extends Component {
 
   componentDidMount() {
+    const { setBooks, showStart } = this.props;
     fetchOnLoad()
-      .then(data => this.props.setBooks(data))
+      .then(data => setBooks(data))
+      .then((data) => showStart({start: 0, end: 10, length: data.foundBooks.length}))
       .catch(error => console.log(error))
   }
 
   toggleFavorite = (book, bool) => {
-    const { currentUser, addFavorite, setFavorites, setGenres, addGenre} = this.props;
+    const { currentUser, addFavorite, setFavorites, setGenres, addGenre,} = this.props;
     if(!bool) {
       postFavorite(book, currentUser.id)
         .then(data => addFavorite(data))
@@ -62,7 +64,7 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch => (
-  bindActionCreators({ setBooks, addFavorite, setFavorites, setGenres, addGenre }, dispatch)
+  bindActionCreators({ setBooks, addFavorite, setFavorites, setGenres, addGenre, showStart }, dispatch)
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

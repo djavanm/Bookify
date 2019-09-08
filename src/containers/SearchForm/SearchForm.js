@@ -22,11 +22,11 @@ class SearchForm extends Component {
     e.preventDefault();
     getBooks(searchInput)
       .then(books => setBooks(books))
+      .then(data => showStart({start: 0, end: 10, length: data.foundBooks.length}))
       .catch(error => console.log(error))
     this.setState({
       searchInput: ''
     })
-    showStart({start: 0, end: 10, length: length})
   }
 
   render() {
