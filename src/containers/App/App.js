@@ -3,6 +3,7 @@ import Nav from '../../containers/Nav/Nav';
 import BookContainer from '../../components/BookContainer/BookContainer';
 import SearchForm from '../SearchForm/SearchForm';
 import LoginForm from '../LoginForm/LoginForm';
+import BookDetails from '../../components/BookDetails/BookDetails';
 import { fetchOnLoad, postFavorite, deleteFavorite} from '../../util/apiCalls';
 import { bindActionCreators } from 'redux';
 import { setBooks, addFavorite, setFavorites, setGenres, addGenre } from '../../actions';
@@ -42,12 +43,20 @@ class App extends Component {
       <Route exact path='/' render={() => <BookContainer all={true} toggleFavorite={this.toggleFavorite} /> } />
       <Route exact path='/my-collection' render={() => <Nav home={true} currentUser={currentUser}/>} />
       <Route exact path='/my-collection' render={() => <BookContainer all={false} toggleFavorite={this.toggleFavorite} /> } />
+      <Route path='/book/:id' render={({ match }) => {
+          let targetBook = this.props.currentBooks.find(book => book.book_id === parseInt(match.params.id));
+          if(!targetBook) {
+            targetBook = this.props.favorites.find(book => book.book_id === parseInt(match.params.id))
+          }
+          return <BookDetails {...targetBook} currentUser={currentUser} />
+        }} />
       </main>
     )
   }
 }
 
 export const mapStateToProps = state => ({
+  currentBooks: state.currentBooks,
   currentUser: state.currentUser,
   favorites: state.favorites
 });

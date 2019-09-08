@@ -12,7 +12,9 @@ const Book = ({currentUser, data, toggleFavorite, favorites}) => {
     <article className='book'>
       <img src={artwork_url} alt={`Cover for ${book_name}`} />
       <p>{author_name}</p>
-      <p>{book_name}</p>
+      <Link to={`/book/${book_id}`} className="link">
+        <p>{book_name}</p>
+      </Link>
       {favoriteBtn}
     </article>
   )
