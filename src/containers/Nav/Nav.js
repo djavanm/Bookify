@@ -5,10 +5,10 @@ import { logoutUser, showGenreFilter, showAllFilter} from '../../actions';
 import { bindActionCreators } from 'redux';
 
 const Nav = ({ currentUser, logoutUser, home, genres, showGenreFilter, showAllFilter }) => {
-  const currentGenres = genres.map(genre => {
-  return <button onClick={() => showGenreFilter(genre)}>{genre}</button>
+  const currentGenres = genres.map((genre, index) => {
+  return <button key={index+1} onClick={() => showGenreFilter(genre)}>{genre}</button>
   });
-  const showAll = <button onClick={() => showAllFilter()}>Show All</button>;
+  const showAll = <button key={0} onClick={() => showAllFilter()}>Show All</button>;
   const allGenres = [showAll, ...currentGenres];
   return (
     <nav>
