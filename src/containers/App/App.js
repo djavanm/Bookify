@@ -45,7 +45,10 @@ class App extends Component {
       <Route exact path='/my-collection' render={() => <BookContainer all={false} toggleFavorite={this.toggleFavorite} /> } />
       <Route path='/book/:id' render={({ match }) => {
           let targetBook = this.props.currentBooks.find(book => book.book_id === parseInt(match.params.id));
-          return <BookDetails {...targetBook} />
+          if(!targetBook) {
+            targetBook = this.props.favorites.find(book => book.book_id === parseInt(match.params.id))
+          }
+          return <BookDetails {...targetBook} currentUser={currentUser} />
         }} />
       </main>
     )
