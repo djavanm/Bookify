@@ -6,7 +6,7 @@ export const setBooks = foundBooks => ({
 export const setUser = foundUser => ({
   type: 'FOUND_USER',
   foundUser
-}); 
+});
 
 export const logoutUser = () => ({
   type: 'REMOVE_USER'
@@ -44,4 +44,18 @@ export const setGenres = favorites => ({
 export const addGenre = genre => ({
   type: 'ADD_GENRE',
   genre
+})
+
+export const showStart = () => ({
+  type: 'SHOW_START'
+})
+
+export const showNext = current => ({
+  type: 'SHOW_NEXT',
+  current
+})
+
+export const showPrevious = current => ({
+  type: 'SHOW_PREVIOUS',
+  current
 })
