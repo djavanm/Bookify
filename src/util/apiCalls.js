@@ -1,5 +1,5 @@
 export const fetchOnLoad = () => {
-  return fetch('https://itunes.apple.com/search?term=audiobooks&limit=10')
+  return fetch('https://itunes.apple.com/search?term=audiobooks')
     .then(response => {
       if(!response.ok) {
         throw Error('ERROR')
