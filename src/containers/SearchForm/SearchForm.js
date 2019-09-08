@@ -18,7 +18,7 @@ class SearchForm extends Component {
 
   handleSearch = (e) => {
     const { searchInput } = this.state;
-    const { setBooks, showStart, length } = this.props;
+    const { setBooks, showStart } = this.props;
     e.preventDefault();
     getBooks(searchInput)
       .then(books => setBooks(books))
@@ -45,12 +45,8 @@ class SearchForm extends Component {
   }
 }
 
-export const mapStateToProps = state => ({
-  length: state.currentBooks.length
-})
-
 export const mapDispatchToProps = dispatch => (
   bindActionCreators({ setBooks, showStart }, dispatch)
 )
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);
+export default connect(null, mapDispatchToProps)(SearchForm);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Nav from '../../containers/Nav/Nav';
-import BookContainer from '../../components/BookContainer/BookContainer';
+import BookContainer from '../../containers/BookContainer/BookContainer';
 import SearchForm from '../SearchForm/SearchForm';
 import LoginForm from '../LoginForm/LoginForm';
 import BookDetails from '../../components/BookDetails/BookDetails';

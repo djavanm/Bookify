@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Book from '../../containers/Book/Book'
+import Book from '../Book/Book'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { showStart, showNext, showPrevious } from '../../actions';
@@ -19,11 +19,11 @@ const BookContainer = ({all, books, favorites, toggleFavorite, searchFilter, sho
     return <Book data={book} key={book.book_id} toggleFavorite={toggleFavorite} />
   })
   const showPrevBool = searchFilter.start === 0;
-  const showNextBool = (searchFilter.length - searchFilter.start) < 10;
+  const showNextBool = (searchFilter.length - searchFilter.start) < 10
   return (
     <section>
-      <button onClick={() => showPrevious(searchFilter)} disabled={showPrevBool}>Show Prev</button>
-      <button onClick={() => showNext(searchFilter)} disabled={showNextBool}>Show Next</button>
+      { all && <button onClick={() => showPrevious(searchFilter)} disabled={showPrevBool}>Show Prev</button> }
+      { all && <button onClick={() => showNext(searchFilter)} disabled={showNextBool}>Show Next</button> }
       <section className="book-container">
         {displayedBooks}
       </section>
