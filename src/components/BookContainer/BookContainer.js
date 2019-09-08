@@ -3,9 +3,9 @@ import Book from '../../containers/Book/Book'
 import { connect } from 'react-redux';
 
 const getFilteredFavorites = (favorites, genre) => {
-  return genre ? favorites.filter(fav => fav.primary_genre_name) 
+  return genre ? favorites.filter(fav => fav.primary_genre_name === genre)
   : favorites;
-}
+};
 
 const BookContainer = ({all, books, favorites, toggleFavorite}) => {
   const data = all ? books : favorites;
@@ -22,7 +22,8 @@ const BookContainer = ({all, books, favorites, toggleFavorite}) => {
 
 export const mapStateToProps = state => ({
   books: state.currentBooks,
-  favorites: state.favorites
+  favorites: getFilteredFavorites(state.favorites, state.genreFilter),
+  genreFilter: state.genreFilter
 })
 
 export default connect(mapStateToProps)(BookContainer);
