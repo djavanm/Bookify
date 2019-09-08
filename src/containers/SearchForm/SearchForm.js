@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setBooks } from '../../actions';
+import { setBooks, showStart } from '../../actions';
 import { getBooks } from '../../util/apiCalls'
 
 class SearchForm extends Component {
@@ -18,10 +18,11 @@ class SearchForm extends Component {
 
   handleSearch = (e) => {
     const { searchInput } = this.state;
-    const { setBooks } = this.props;
+    const { setBooks, showStart } = this.props;
     e.preventDefault();
     getBooks(searchInput)
       .then(books => setBooks(books))
+      .then(data => showStart({start: 0, end: 10, length: data.foundBooks.length}))
       .catch(error => console.log(error))
     this.setState({
       searchInput: ''
@@ -45,7 +46,7 @@ class SearchForm extends Component {
 }
 
 export const mapDispatchToProps = dispatch => (
-  bindActionCreators({ setBooks }, dispatch)
+  bindActionCreators({ setBooks, showStart }, dispatch)
 )
 
 export default connect(null, mapDispatchToProps)(SearchForm);
