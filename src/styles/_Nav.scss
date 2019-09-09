@@ -14,13 +14,18 @@
   margin: 10px;
   font-family: $font-bold;
   background-color: $secondary;
-  border: 2px solid $primary;
   font-size: 16px;
   display: inline-block;
 }
 .nav-btn:hover {
-  background: $primary;
-  color: $light;
+  background: $dark;
+  color: $secondary;
+  box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+}
+
+.show-btn:hover:disabled {
+  box-shadow: none;
+  color: $dark;
 }
 
 nav {

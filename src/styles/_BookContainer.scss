@@ -20,14 +20,14 @@
   width: 150px;
   font-family: $font-bold;
   background-color: $secondary;
-  border: 2px solid $primary;
   font-size: 22px;
 }
 
 
 .show-btn:hover {
-  background: $primary;
+  background: $dark;
   color: $light;
+  box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
 }
 
 .show-btn:disabled {

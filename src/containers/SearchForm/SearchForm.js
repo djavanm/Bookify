@@ -39,7 +39,7 @@ class SearchForm extends Component {
         type="text"
         name="searchInput"
         value={searchInput}
-        placeholder='Audiobook or Author'
+        placeholder='Enter an Audiobook or Author'
         onChange={this.handleChange}/>
         <button className='search-btn' onClick={this.handleSearch}>Search</button>
       </form>
