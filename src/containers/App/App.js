@@ -43,8 +43,8 @@ class App extends Component {
       <Route exact path='/' render={() => <Nav currentUser={currentUser}/>} />
       <Route exact path='/' render={() => <SearchForm /> } />
       <Route exact path='/' render={() => <BookContainer all={true} toggleFavorite={this.toggleFavorite} /> } />
-      <Route exact path='/my-collection' render={() => <Nav home={true} currentUser={currentUser}/>} />
-      <Route exact path='/my-collection' render={() => <BookContainer all={false} toggleFavorite={this.toggleFavorite} /> } />
+      <Route exact path='/my-collection' render={() => currentUser ? <Nav home={true} currentUser={currentUser} /> : <Redirect to='/' /> } />
+      <Route exact path='/my-collection' render={() => currentUser ? <BookContainer all={false} toggleFavorite={this.toggleFavorite} /> : <Redirect to='/' /> } />
       <Route path='/book/:id' render={({ match }) => {
           let targetBook = this.props.currentBooks.find(book => book.book_id === parseInt(match.params.id));
           if(!targetBook) {
