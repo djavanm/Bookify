@@ -10,11 +10,13 @@ const Book = ({currentUser, data, toggleFavorite, favorites}) => {
   const favoriteBtn = currentUser ? <button className={btn} onClick={() => toggleFavorite(data, isFavorite)}>Fav</button> : <Link to='/login'><button>Fav</button></Link>
   return (
     <article className='book'>
-      <img src={artwork_url} alt={`Cover for ${book_name}`} />
-      <p>{author_name}</p>
+      <img src={artwork_url} alt={`Cover for ${book_name}`} className='card-cover' />
+      <section className='card-info'>
       <Link to={`/book/${book_id}`} className="link">
-        <p>{book_name}</p>
+        <p className='book-name'>{book_name}</p>
       </Link>
+      <p className='author-name'>{author_name}</p>
+      </section>
       {favoriteBtn}
     </article>
   )
