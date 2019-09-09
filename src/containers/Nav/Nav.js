@@ -12,7 +12,7 @@ const Nav = ({ currentUser, logoutUser, home, genres, showGenreFilter, showAllFi
   const allGenres = [showAll, ...currentGenres];
   return (
     <nav>
-    <h1>Bookify</h1>
+    <h1 className='header-title'>Bookify</h1>
     { !currentUser && <Link to='/login'><button> SIGN IN </button></Link> }
     { currentUser && !home && <Link to='/my-collection'><button>Show Favorites</button></Link> }
     { currentUser && home && <Link to='/'><button>Search Audiobooks</button></Link> }
