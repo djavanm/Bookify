@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav should match the snapshot with the data passed through 1`] = `
+<Fragment>
+  <h1
+    className="header-title"
+  >
+    Bookify 
+    <FaLeaf
+      color="black"
+      size={40}
+    />
+     
+  </h1>
+  <nav>
+    <section
+      className="nav-buttons"
+    >
+      <h2
+        className="nav-welcome"
+      >
+         Welcome, 
+        Sam
+         
+      </h2>
+      <Link
+        className="link"
+        to="/"
+      >
+        <button
+          className="nav-btn"
+        >
+          Search Audiobooks
+        </button>
+      </Link>
+      <button
+        className="nav-btn"
+        onClick={[MockFunction]}
+      >
+        Logout
+      </button>
+    </section>
+    <div
+      className="all-genres"
+    >
+      <button
+        className="nav-btn"
+        key="0"
+        onClick={[Function]}
+      >
+        Show All
+      </button>
+      <button
+        className="nav-btn"
+        key="1"
+        onClick={[Function]}
+      >
+        Mystery
+      </button>
+      <button
+        className="nav-btn"
+        key="2"
+        onClick={[Function]}
+      >
+        Comedy
+      </button>
+    </div>
+  </nav>
+</Fragment>
+`;
