@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BookDetails should match the snapshot with all of the data passed through 1`] = `
+<article>
+  <Connect(Nav)
+    currentUser=""
+  />
+  <h2 />
+  <p>
+    Genre: 
+  </p>
+  <p>
+    Release: 
+    undefined/undefined/2019/09/08
+  </p>
+  <Markup
+    content=""
+    emptyContent={null}
+    parsedContent={null}
+    tagName="div"
+  />
+</article>
+`;

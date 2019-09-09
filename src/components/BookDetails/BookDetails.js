@@ -3,7 +3,7 @@ import Nav from '../../containers/Nav/Nav';
 import { Markup } from 'interweave';
 
 
-const BookDetails = ({ currentUser, author_name, book_name, artwork_url, description, release_date, book_id, primary_genre_name }) => {
+const BookDetails = ({ currentUser, book_name, description, release_date, primary_genre_name }) => {
   const releaseSplit = release_date.split('T')[0].split('-');
   const release = `${releaseSplit[1]}/${releaseSplit[2]}/${releaseSplit[0]}`;
   return (
