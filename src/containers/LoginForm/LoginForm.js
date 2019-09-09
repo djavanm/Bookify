@@ -70,44 +70,49 @@ class LoginForm extends Component {
     const btnText = existingUser ? 'Sign up' : 'Login'
     return (
       <div>
-        <button onClick={this.toggleExisting}>{btnText}</button>
+        <button className='login-btn' onClick={this.toggleExisting}>{btnText}</button>
         { error && <p>{error}</p> }
         {existingUser &&
       <form>
         <input
+        className='login-input'
         type="text"
         placeholder="Email"
         name="email"
         value={email}
         onChange={this.handleChange} />
         <input
+        className='login-input'
         type="password" placeholder="Password"
         name="password"
         value={password}
         onChange={this.handleChange}/>
-        <button onClick={this.loginUser}>Login</button>
+        <button className='login-btn' onClick={this.loginUser}>Login</button>
       </form>}
       {!existingUser &&
       <form>
         <input
+        className='login-input'
         type="text"
         placeholder="Name"
         name="name"
         value={name}
         onChange={this.handleChange} />
         <input
+        className='login-input'
         type="text"
         placeholder="Email"
         name="email"
         value={email}
         onChange={this.handleChange} />
         <input
+        className='login-input'
         type="password"
         placeholder="Create a Password"
         name="password"
         value={password}
         onChange={this.handleChange} />
-        <button onClick={this.submitUser}>Submit</button>
+        <button className='login-btn' onClick={this.submitUser}>Submit</button>
       </form>}
       </div>
     )

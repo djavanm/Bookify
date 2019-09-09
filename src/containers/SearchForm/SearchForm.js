@@ -33,13 +33,15 @@ class SearchForm extends Component {
     const { searchInput } = this.state;
 
     return (
-      <form>
+      <form className='search-form'>
         <input
+        className='search-input'
         type="text"
         name="searchInput"
         value={searchInput}
+        placeholder='Audiobook or Author'
         onChange={this.handleChange}/>
-        <button onClick={this.handleSearch}>Search</button>
+        <button className='search-btn' onClick={this.handleSearch}>Search</button>
       </form>
     )
   }
