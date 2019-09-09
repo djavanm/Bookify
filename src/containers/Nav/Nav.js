@@ -5,7 +5,7 @@ import { logoutUser, showGenreFilter, showAllFilter} from '../../actions';
 import { bindActionCreators } from 'redux';
 import { FaLeaf } from "react-icons/fa";
 
-const Nav = ({ currentUser, logoutUser, home, genres, showGenreFilter, showAllFilter }) => {
+export const Nav = ({ currentUser, logoutUser, home, genres, showGenreFilter, showAllFilter }) => {
   const currentGenres = genres.map((genre, index) => {
   return <button className='nav-btn' key={index+1} onClick={() => showGenreFilter(genre)}>{genre}</button>
   });

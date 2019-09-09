@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match the snapshot with the data passed through 1`] = `
+<main
+  className="app"
+>
+  <Route
+    exact={true}
+    path="/login"
+    render={[Function]}
+  />
+  <Route
+    exact={true}
+    path="/"
+    render={[Function]}
+  />
+  <Route
+    exact={true}
+    path="/"
+    render={[Function]}
+  />
+  <Route
+    exact={true}
+    path="/"
+    render={[Function]}
+  />
+  <Route
+    exact={true}
+    path="/my-collection"
+    render={[Function]}
+  />
+  <Route
+    exact={true}
+    path="/my-collection"
+    render={[Function]}
+  />
+  <Route
+    path="/book/:id"
+    render={[Function]}
+  />
+</main>
+`;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 
-const Book = ({currentUser, data, toggleFavorite, favorites}) => {
+export const Book = ({currentUser, data, toggleFavorite, favorites}) => {
   const { author_name, book_name, artwork_url, book_id } = data;
   let shortName = book_name.split(' ')
   if(shortName.length > 5) {

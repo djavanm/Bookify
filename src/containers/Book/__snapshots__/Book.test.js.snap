@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Book should 1`] = `
+<article
+  className="book"
+>
+  <img
+    alt="Cover for Good Omens"
+    className="card-cover"
+    src="https://images/good"
+  />
+  <section
+    className="card-info"
+  >
+    <Link
+      className="link"
+      to="/book/42"
+    >
+      <p
+        className="book-name"
+      >
+        Good Omens
+      </p>
+    </Link>
+    <p
+      className="author-name"
+    >
+      Neil Gaiman
+    </p>
+  </section>
+  <button
+    className="btn"
+    onClick={[Function]}
+  >
+    Fav
+  </button>
+</article>
+`;

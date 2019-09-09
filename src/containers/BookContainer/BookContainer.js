@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Book from '../Book/Book'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -13,7 +13,7 @@ const getFilteredFavorites = (favorites, genre) => {
   : favorites;
 };
 
-const BookContainer = ({all, books, favorites, toggleFavorite, searchFilter, showStart, showNext, showPrevious}) => {
+export const BookContainer = ({all, books, favorites, toggleFavorite, searchFilter, showStart, showNext, showPrevious}) => {
   const data = all ? books : favorites;
   const displayedBooks = data.map(book => {
     return <Book data={book} key={book.book_id} toggleFavorite={toggleFavorite} />

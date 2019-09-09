@@ -6,7 +6,7 @@ import { setUser, setFavorites, setGenres } from '../../actions';
 import { getFavorites } from '../../util/apiCalls';
 
 
-class LoginForm extends Component {
+export class LoginForm extends Component {
   constructor() {
     super()
     this.state = {

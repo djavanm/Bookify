@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchForm should match the snapshot with the data passed through 1`] = `
+<form
+  className="search-form"
+>
+  <input
+    className="search-input"
+    name="searchInput"
+    onChange={[Function]}
+    placeholder="Audiobook or Author"
+    type="text"
+    value=""
+  />
+  <button
+    className="search-btn"
+    onClick={[Function]}
+  >
+    Search
+  </button>
+</form>
+`;
