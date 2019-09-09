@@ -10,7 +10,7 @@ import { setBooks, addFavorite, setFavorites, setGenres, addGenre, showStart } f
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 
-class App extends Component {
+export class App extends Component {
 
   componentDidMount() {
     const { setBooks, showStart } = this.props;
