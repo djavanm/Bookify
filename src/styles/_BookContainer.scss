@@ -6,3 +6,29 @@
   justify-content: space-evenly;
   align-items: center;
 }
+
+.show-container {
+  display: flex;
+  justify-content: center;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.show-btn {
+  height: 40px;
+  width: 150px;
+  font-family: $font-bold;
+  background-color: $secondary;
+  border: 2px solid $primary;
+  font-size: 22px;
+}
+
+
+.show-btn:hover {
+  background: $primary;
+  color: $light;
+}
+
+.show-btn:disabled {
+  background: $light;
+}
