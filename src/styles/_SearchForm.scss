@@ -3,29 +3,28 @@
   width: 150px;
   font-family: $font-bold;
   background-color: $secondary;
-  border: 2px solid $primary;
   font-size: 22px;
 }
 
 .search-btn:hover {
-  background: $primary;
-  color: $light;
+  background: $dark;
+  color: $secondary;
+  box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
 }
 
 .search-input {
   height: 40px;
   width: 200px;
   font-family: $font-bold;
-  background-color: $light;
-  border: 2px solid $primary;
-  font-size: 16px;
+  background-color: $secondary;
+  font-size: 12px;
   text-align: center;
   margin-right: 20px;
 
 }
 
 .search-input::placeholder{
-  color: #D6D6D4;
+  color: #6B6B6B;
 }
 
 .search-form {
