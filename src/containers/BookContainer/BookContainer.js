@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Book from '../Book/Book'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';

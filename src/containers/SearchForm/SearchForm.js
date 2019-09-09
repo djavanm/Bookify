@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { setBooks, showStart } from '../../actions';
 import { getBooks } from '../../util/apiCalls'
 
-class SearchForm extends Component {
+export class SearchForm extends Component {
   constructor() {
     super();
     this.state = {
