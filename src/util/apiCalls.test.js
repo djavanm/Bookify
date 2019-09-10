@@ -4,11 +4,13 @@ import { fetchOnLoad, getBooks, cleanBooks, createUser, getFavorites, postFavori
 describe('apiCalls', () => {
   let mockBook;
   let mockNewUser;
+  let mockFavoriteBook;
+  let mockFavoriteBooks;
   beforeEach(() => {
     mockBook = {
       collectionId: 1,
       artistName: 'Djavan',
-      collectionName: 124,
+      collectionName: 'How to do apiCalls, version 1',
       artworkUrl100: 'image string thing goes here',
       releaseDate: '9999',
       description: 'The description on this is so descriptive',
@@ -16,11 +18,34 @@ describe('apiCalls', () => {
     }
   });
 
+  mockFavoriteBook = {
+    id: 12,
+    book_id: 1,
+    author_name: 'Djavan',
+    book_name: 'How to do apiCalls, version 1',
+    artwork_url: 'image string that goes here',
+    release_date: '9999',
+    description: 'The description on this is so descriptive',
+    primary_genre_name: 'Loud'
+  };
+
+  mockFavoriteBooks = [{
+    id: 12,
+    book_id: 1,
+    author_name: 'Djavan',
+    book_name: 'How to do apiCalls, version 1',
+    artwork_url: 'image string that goes here',
+    release_date: '9999',
+    description: 'The description on this is so descriptive',
+    primary_genre_name: 'Loud'
+  }];
+
   mockNewUser = {
     name: 'Sam',
     email: 'Sam@aol.com',
-    password: 'eggcelent'
-  }
+    password: 'eggcelent',
+    id: 1
+  };
 
   window.fetch = jest.fn().mockImplementation(() => {
     return Promise.resolve({
@@ -87,5 +112,66 @@ describe('apiCalls', () => {
     expect(createUser(mockNewUser, 'users')).resolves.toEqual(expected)
   });
 
-  
+  it('getFavorites should search the proper URL for a users favorite books', () => {
+    const currentUser = {
+      name: 'sam',
+      id: 1,
+      email: 'sam@aol.com'
+    };
+    const expected = `http://localhost:3001/api/v1/users/${currentUser.id}/bookfavorites`;
+    getFavorites(1);
+    expect(window.fetch).toHaveBeenCalledWith(expected);
+  });
+
+  it('getFavorites should return an array of favorites of the current user\'s favorite books', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(mockFavoriteBooks)
+      })
+    })
+    expect(getFavorites(1)).resolves.toEqual(mockFavoriteBooks);
+  });
+
+  it('postFavorite should go to the proper URL and current book', () => {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(mockFavoriteBook),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    postFavorite(mockFavoriteBook, 1);
+    expect(window.fetch).toHaveBeenCalledWith(`http://localhost:3001/api/v1/users/${1}/bookfavorites`, options)
+  });
+
+  it('postFavorite should return the favorited book with the current user\'s id attached', () => {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(mockFavoriteBook),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    const expected = {
+      id: 12,
+      user_id: 1,
+      book_id: 1,
+      author_name: 'Djavan',
+      book_name: 'How to do apiCalls, version 1',
+      artwork_url: 'image string that goes here',
+      release_date: '9999',
+      description: 'The description on this is so descriptive',
+      primary_genre_name: 'Loud'
+    }
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(expected)
+      })
+    })
+    expect(postFavorite(mockFavoriteBook, 1)).resolves.toEqual(expected);
+  });
+
 });
