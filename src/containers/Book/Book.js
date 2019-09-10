@@ -11,8 +11,9 @@ export const Book = ({currentUser, data, toggleFavorite, favorites}) => {
   }
   shortName = shortName.join(' ')
   const isFavorite = favorites.map(favorite => favorite.book_id).includes(book_id);
-  const btn = isFavorite ? 'btn-active': 'btn'
-  const favoriteBtn = currentUser ? <button className={btn} onClick={() => toggleFavorite(data, isFavorite)}>Favorite</button> : <Link to='/login'><button className='btn'>Favorite</button></Link>
+  const btn = isFavorite ? 'btn-active': 'btn';
+  const btnText = isFavorite ? '': 'Favorite'
+  const favoriteBtn = currentUser ? <button className={btn} onClick={() => toggleFavorite(data, isFavorite)}>{btnText}</button> : <Link to='/login'><button className='btn btn-fake'>Favorite</button></Link>
   return (
     <article className='book'>
       <img src={artwork_url} alt={`Cover for ${book_name}`} className='card-cover' />

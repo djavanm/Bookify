@@ -37,7 +37,7 @@
 
 nav {
   display: flex;
-  height: 130px;
+  height: 20vh;
   justify-content: space-between;
 }
 
@@ -53,4 +53,8 @@ h1 {
 
 .nav-welcome {
   text-align: center;
+}
+
+.user-name {
+  color: $primary;
 }
