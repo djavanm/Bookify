@@ -21,15 +21,15 @@ export const BookContainer = ({all, books, favorites, toggleFavorite, searchFilt
   const showPrevBool = searchFilter.start === 0;
   const showNextBool = (searchFilter.length - searchFilter.start) < 10
   return (
-    <>
-    <section className='show-container' >
-      { all && <button className='show-btn' onClick={() => showPrevious(searchFilter)} disabled={showPrevBool}>Show Prev</button> }
-      { all && <button className='show-btn' onClick={() => showNext(searchFilter)} disabled={showNextBool}>Show Next</button> }
+    <section className='containers'>
+      <section className='show-container' >
+        { all && <button className='show-btn' onClick={() => showPrevious(searchFilter)} disabled={showPrevBool}>Show Prev</button> }
+        { all && <button className='show-btn' onClick={() => showNext(searchFilter)} disabled={showNextBool}>Show Next</button> }
+      </section>
+      <section className='book-container'>
+        {displayedBooks}
+      </section>
     </section>
-    <section className='book-container'>
-      {displayedBooks}
-    </section>
-    </>
   )
 }
 

@@ -1,16 +1,16 @@
-.book-container {
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
 .show-container {
   display: flex;
   justify-content: center;
   margin: 25px 0;
+}
+
+.book-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-evenly;
 }
 
 .show-btn {
