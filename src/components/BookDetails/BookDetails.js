@@ -9,10 +9,13 @@ const BookDetails = ({ currentUser, book_name, description, release_date, primar
   return (
     <article>
     <Nav currentUser={currentUser} />
-    <h2>{book_name}</h2>
-    <p>Genre: {primary_genre_name}</p>
-    <p>Release: {release}</p>
-    <Markup content={description} />
+    <div className="details-container">
+      <h2>{book_name}</h2>
+      <p>Genre: {primary_genre_name}</p>
+      <p>Release Date: {release}</p>
+      <br />
+      <Markup content={description} />
+    </div>
     </article>
   )
 };
