@@ -167,6 +167,7 @@ describe('App', () => {
     wrapper.instance().toggleFavorite(mockBook, false);
     expect(postFavorite).toHaveBeenCalled();
   });
+
   it('should call deleteFavorite when toggleFavorite is given a false value', async () => {
     wrapper.instance().toggleFavorite(mockBook, true);
     expect(deleteFavorite).toHaveBeenCalled();
