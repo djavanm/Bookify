@@ -1,6 +1,7 @@
 import React from 'react';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
 import { setBooks, addFavorite, setFavorites, setGenres, addGenre, showStart } from '../../actions';
+import { fetchOnLoad, postFavorite, deleteFavorite} from '../../util/apiCalls';
 import { shallow } from 'enzyme';
 
 describe('App', () => {
@@ -127,5 +128,10 @@ describe('App', () => {
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
   });
 
-  
+  it.skip('should call postFavorite when toggleFavorite is given a false value', async () => {
+    const postFavorite = jest.fn();
+    wrapper.instance().toggleFavorite(mockBook, false);
+    expect(postFavorite).toHaveBeenCalled();
+  });
+
 });
