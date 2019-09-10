@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { LoginForm, mapDispatchToProps } from './LoginForm';
-import { setUser, setFavorites, setGenres } from '../../actions';
+import { setUser } from '../../actions';
 import { createUser } from '../../util/apiCalls';
 
 jest.mock('../../util/apiCalls');

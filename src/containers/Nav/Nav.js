@@ -41,7 +41,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Nav);
 Nav.propTypes = {
   genres: PropTypes.array,
   currentUser: PropTypes.object,
-  home: PropTypes.bool.isRequired,
+  home: PropTypes.bool,
   logoutUser: PropTypes.func.isRequired,
   showGenreFilter: PropTypes.func.isRequired,
   showAllFilter: PropTypes.func.isRequired

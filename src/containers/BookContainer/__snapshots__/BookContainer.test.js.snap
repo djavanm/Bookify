@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BookContainer should match the snapshot with the data passed through 1`] = `
-<Fragment>
+<section
+  className="containers"
+>
   <section
     className="show-container"
   >
@@ -23,5 +25,5 @@ exports[`BookContainer should match the snapshot with the data passed through 1`
   <section
     className="book-container"
   />
-</Fragment>
+</section>
 `;
