@@ -12,6 +12,7 @@ export const Nav = ({ currentUser, logoutUser, home, genres, showGenreFilter, sh
   const showAll = <button className='nav-btn' key={0} onClick={() => showAllFilter()}>Show All</button>;
   const allGenres = [showAll, ...currentGenres];
   return (
+    <>
     <nav>
       <h1 className='header-title'>Bookify <FaLeaf color='#07804B' size={40} /> </h1>
       <section className='nav-buttons'>
@@ -21,8 +22,9 @@ export const Nav = ({ currentUser, logoutUser, home, genres, showGenreFilter, sh
       { currentUser && home && <Link className='link' to='/'><button className='nav-btn'>Search Audiobooks</button></Link> }
       {currentUser && <button className='nav-btn loggedIn-btn' onClick={logoutUser}>Logout</button> }
       </section>
-      { currentUser && home && <div className='all-genres'>{ allGenres }</div> }
     </nav>
+      {currentUser && home && <div className='all-genres'>{allGenres}</div>}
+    </>
   )
 }
 export const mapStateToProps = state => ({
