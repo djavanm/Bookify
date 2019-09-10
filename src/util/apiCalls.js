@@ -2,24 +2,22 @@ export const fetchOnLoad = () => {
   return fetch('https://itunes.apple.com/search?term=audiobooks')
     .then(response => {
       if(!response.ok) {
-        throw Error('ERROR')
+        throw new Error('Could not retrieve books.')
       }
       return response.json()
     })
     .then(data => cleanBooks(data.results))
-    .catch(error => Error(error.message))
 }
 
 export const getBooks = (query) => {
   return fetch(`https://itunes.apple.com/search?media=audiobook&term=${query}`)
     .then(response => {
       if(!response.ok) {
-        throw Error('ERROR')
+        throw new Error('Could not retrieve books.')
       }
       return response.json()
     })
     .then(data => cleanBooks(data.results))
-    .catch(error => Error(error.message))
 }
 
 export const cleanBooks = bookData => {
@@ -47,22 +45,20 @@ export const createUser = (newUser, route) => {
   return fetch(`http://localhost:3001/api/v1/${route}`, options)
     .then(response => {
       if (!response.ok) {
-        throw Error('ERROR')
+        throw new Error('User cannot be created.')
       }
       return response.json()
     })
-    .catch(error => console.log(error.message));
 }
 
 export const getFavorites = (userId) => {
   return fetch(`http://localhost:3001/api/v1/users/${userId}/bookfavorites`)
     .then(response => {
       if (!response.ok) {
-        throw Error('ERROR')
+        throw new Error('Could not retrieve favorites.')
       }
       return response.json()
     })
-    .catch(error => console.log(error.message));
 }
 
 export const postFavorite = (book, id) => {
@@ -76,11 +72,10 @@ export const postFavorite = (book, id) => {
   return fetch(`http://localhost:3001/api/v1/users/${id}/bookfavorites`, options)
     .then(response => {
       if (!response.ok) {
-        throw Error('ERROR')
+        throw new Error('Could not post favorite.')
       }
       return response.json()
     })
-    .catch(error => console.log(error.message));
 }
 
 export const deleteFavorite = (id, bookId) => {
@@ -94,10 +89,8 @@ export const deleteFavorite = (id, bookId) => {
     .then(() => fetch(`http://localhost:3001/api/v1/users/${id}/bookfavorites/`))
     .then(response => {
       if (!response.ok) {
-        throw Error('ERROR')
+        throw new Error('Could not delete favorite.')
       }
       return response.json()
     })
-    .catch(error => console.log(error.message));
 }
-
