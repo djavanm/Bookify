@@ -48,7 +48,10 @@ h1 {
 }
 
 .all-genres {
-  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
 }
 
 .nav-welcome {
