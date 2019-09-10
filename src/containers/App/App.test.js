@@ -70,6 +70,8 @@ describe('App', () => {
   const setFavoritesMock = jest.fn();
   const setGenresMock = jest.fn();
   const addGenreMock = jest.fn();
+  const showStartMock = jest.fn();
+
 
   beforeEach(() => {
     wrapper = shallow(<App
@@ -80,6 +82,7 @@ describe('App', () => {
       setFavorites={setFavoritesMock}
       setGenres={setGenresMock}
       addGenre={addGenreMock}
+      showStart={showStartMock}
        />)
   });
 

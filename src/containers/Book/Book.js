@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 
 export const Book = ({currentUser, data, toggleFavorite, favorites}) => {
@@ -33,3 +34,10 @@ export const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, null)(Book);
+
+Book.propTypes = {
+  currentUser: PropTypes.object,
+  favorites: PropTypes.array.isRequired,
+  data: PropTypes.object.isRequired,
+  toggleFavorite: PropTypes.func.isRequired
+};
