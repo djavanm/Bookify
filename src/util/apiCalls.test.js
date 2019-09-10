@@ -70,7 +70,23 @@ describe('apiCalls', () => {
 
   it('getBooks should call a url and return cleaned data', () => {
     expect(getBooks('testing123')).resolves.toEqual(mockBook)
-  })
+  });
+
+  it('getBooks should return an error if the server is down', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.reject(Error('fetch failed.'))
+    });
+    expect(fetchOnLoad()).rejects.toEqual(Error('fetch failed.'))
+  });
+
+  it('getBooks should return an error if it could not retrieve books', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: false
+      });
+    });
+    expect(fetchOnLoad()).rejects.toEqual(Error('Could not retrieve books.'))
+  });
 
   it('createUser should get with the correct url, given the correct route', () => {
     const options = {
@@ -84,7 +100,7 @@ describe('apiCalls', () => {
     expect(window.fetch).toHaveBeenCalledWith(`http://localhost:3001/api/v1/users`, options);
   });
 
-  it('should return an object with the user id after a successful search', () => {
+  it('createUser should return an object with the user id after a successful search', () => {
     const options = {
       method: 'POST',
       body: JSON.stringify(mockNewUser),
@@ -112,6 +128,15 @@ describe('apiCalls', () => {
     expect(createUser(mockNewUser, 'users')).resolves.toEqual(expected)
   });
 
+  it('createUser should return an error if it could not create a user', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: false
+      });
+    });
+    expect(createUser(mockNewUser, 'users')).rejects.toEqual(Error('User cannot be created.'))
+  });
+
   it('getFavorites should search the proper URL for a users favorite books', () => {
     const currentUser = {
       name: 'sam',
@@ -131,6 +156,15 @@ describe('apiCalls', () => {
       })
     })
     expect(getFavorites(1)).resolves.toEqual(mockFavoriteBooks);
+  });
+
+  it('getFavorites should return an error if it could not create a user', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: false
+      });
+    });
+    expect(getFavorites(1)).rejects.toEqual(Error('Could not retrieve favorites.'))
   });
 
   it('postFavorite should go to the proper URL and current book', () => {
@@ -173,7 +207,16 @@ describe('apiCalls', () => {
     expect(postFavorite(mockFavoriteBook, 1)).resolves.toEqual(expected);
   });
 
-  it('should call the proper URL when removing a user\'s favorite book', () => {
+  it('postFavorite should return an error if it could not create a user', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: false
+      });
+    });
+    expect(postFavorite(mockFavoriteBook, 1)).rejects.toEqual(Error('Could not post favorite.'))
+  });
+
+  it('deleteFavorite should call the proper URL when removing a user\'s favorite book', () => {
     const options = {
       method: 'DELETE',
       headers: {
@@ -184,5 +227,14 @@ describe('apiCalls', () => {
     const mockBookId = 1
     deleteFavorite(mockId, mockBookId);
     expect(window.fetch).toHaveBeenCalledWith(`http://localhost:3001/api/v1/users/${mockId}/bookfavorites/${mockBookId}`, options)
-  })
+  });
+
+  it('deleteFavorite should return an error if it could not delete a favorite', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: false
+      });
+    });
+    expect(deleteFavorite(1, 1)).rejects.toEqual(Error('Could not delete favorite.'))
+  });
 });
