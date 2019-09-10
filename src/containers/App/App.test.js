@@ -2,7 +2,9 @@ import React from 'react';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
 import { setBooks, addFavorite, setFavorites, setGenres, addGenre, showStart, logoutUser } from '../../actions';
 import { fetchOnLoad, postFavorite, deleteFavorite} from '../../util/apiCalls';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
+import { MemoryRouter } from 'react-router';
+import { LoginForm } from '../LoginForm/LoginForm'
 
 jest.mock('../../util/apiCalls');
 
@@ -187,3 +189,15 @@ describe('App', () => {
   });
 
 });
+
+describe('Routes', () => {
+  it('should route to my collection', () => {
+    const wrapper = mount(
+      <MemoryRouter initialEntries={['/login']}>
+        <LoginForm />
+      </MemoryRouter>
+    )
+
+    expect(wrapper.find(LoginForm)).toHaveLength(1)
+  });
+})

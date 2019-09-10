@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Nav, mapStateToProps, mapDispatchToProps } from './Nav';
-import { logoutUser, showGenreFilter, showAllFilter} from '../../actions';
+import { showGenreFilter, showAllFilter} from '../../actions';
 
 describe('Nav', () => {
   let wrapper
