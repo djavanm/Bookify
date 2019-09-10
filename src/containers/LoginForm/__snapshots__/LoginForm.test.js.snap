@@ -1,14 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoginForm should match the snapshot 1`] = `
-<div>
+<div
+  className="login-info"
+>
   <button
-    className="login-btn"
+    className="login-btn switch-btn"
     onClick={[Function]}
   >
     Sign up
   </button>
-  <form>
+  <form
+    className="login-container"
+  >
+    <p>
+      Login to Favorite Books
+    </p>
     <input
       className="login-input"
       name="email"
