@@ -1,7 +1,7 @@
 .book {
   background: $secondary;
   border-radius: 3px;
-  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
   height: 150px;
   width: 60%;
   padding: 10px;
@@ -9,7 +9,7 @@
   display: flex;
 }
 .book:hover {
-  box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.75);
 }
 
 .card-info {
@@ -26,19 +26,30 @@
 }
 
 .book-name {
-  font-size: 34px;
+  font-size: 1.9em;
   margin-top: 5px;
+}
+
+.btn {
+  height: 100%;
+  width: 50px;
 }
 
 .btn-active {
   background-color: red;
+  width: 50px;
+}
+
+.btn:hover {
+  background: $dark;
+  color: $secondary;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.75);
 }
 
 .card-cover {
   height: 120px;
-  width: 120px;
-  display: inline;
   margin-top: auto;
   margin-bottom: auto;
   margin-left: 10px;
+  width: 120px;
 }
