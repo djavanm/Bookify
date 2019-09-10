@@ -28,6 +28,7 @@
 .book-name {
   font-size: 1.9em;
   margin-top: 5px;
+  padding-bottom: 10px;
 }
 
 .btn {
@@ -61,4 +62,8 @@
   margin-bottom: auto;
   margin-left: 10px;
   width: 120px;
+}
+
+.details-link {
+  color: $primary;
 }

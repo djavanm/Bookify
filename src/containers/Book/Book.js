@@ -12,16 +12,17 @@ export const Book = ({currentUser, data, toggleFavorite, favorites}) => {
   shortName = shortName.join(' ')
   const isFavorite = favorites.map(favorite => favorite.book_id).includes(book_id);
   const btn = isFavorite ? 'btn-active': 'btn';
-  const btnText = isFavorite ? '': 'Favorite'
-  const favoriteBtn = currentUser ? <button className={btn} onClick={() => toggleFavorite(data, isFavorite)}>{btnText}</button> : <Link to='/login'><button className='btn btn-fake'>Favorite</button></Link>
+  const btnText = isFavorite ? '' : 'Favorite';
+  const favoriteBtn = currentUser ? <button className={btn} onClick={() => toggleFavorite(data, isFavorite)}>{btnText}</button> : <Link to='/login'><button className="btn btn-fake">Favorite</button></Link>
   return (
     <article className='book'>
       <img src={artwork_url} alt={`Cover for ${book_name}`} className='card-cover' />
       <section className='card-info'>
-      <Link to={`/book/${book_id}`} className="link">
         <p className='book-name'>{shortName}</p>
-      </Link>
-      <p className='author-name'>{author_name}</p>
+        <p className='author-name'>{author_name}</p>
+        <Link to={`/book/${book_id}`} className="link">
+          <p className="details-link">Click for details</p>
+        </Link>
       </section>
       {favoriteBtn}
     </article>
