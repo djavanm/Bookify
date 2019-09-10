@@ -1,4 +1,4 @@
-import { fetchOnLoad, getBooks, cleanBooks, createUser, getFavorites, postFavorite, deleteFavorite } from './apiCalls';
+import { fetchOnLoad, getBooks, createUser, getFavorites, postFavorite, deleteFavorite } from './apiCalls';
 
 
 describe('apiCalls', () => {
@@ -101,13 +101,6 @@ describe('apiCalls', () => {
   });
 
   it('createUser should return an object with the user id after a successful search', () => {
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(mockNewUser),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
     window.fetch = jest.fn().mockImplementation(() => {
       return Promise.resolve({
         ok: true,
@@ -180,13 +173,6 @@ describe('apiCalls', () => {
   });
 
   it('postFavorite should return the favorited book with the current user\'s id attached', () => {
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(mockFavoriteBook),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
     const expected = {
       id: 12,
       user_id: 1,
