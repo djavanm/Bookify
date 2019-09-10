@@ -153,7 +153,6 @@ describe('apiCalls', () => {
         'Content-Type': 'application/json'
       }
     };
-
     const expected = {
       id: 12,
       user_id: 1,
@@ -174,4 +173,16 @@ describe('apiCalls', () => {
     expect(postFavorite(mockFavoriteBook, 1)).resolves.toEqual(expected);
   });
 
+  it('should call the proper URL when removing a user\'s favorite book', () => {
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    const mockId = 1;
+    const mockBookId = 1
+    deleteFavorite(mockId, mockBookId);
+    expect(window.fetch).toHaveBeenCalledWith(`http://localhost:3001/api/v1/users/${mockId}/bookfavorites/${mockBookId}`, options)
+  })
 });
