@@ -55,6 +55,6 @@ export const mapDispatchToProps = dispatch => (
 export default connect(null, mapDispatchToProps)(SearchForm);
 
 SearchForm.propTypes = {
-  setBooks: PropTypes.func.isRequired,
-  showStart: PropTypes.func.isRequired
+  setBooks: PropTypes.func,
+  showStart: PropTypes.func
 }
