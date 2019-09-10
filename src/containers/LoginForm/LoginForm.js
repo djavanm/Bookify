@@ -69,11 +69,11 @@ export class LoginForm extends Component {
     const { existingUser, email, name, password, error } = this.state;
     const btnText = existingUser ? 'Sign up' : 'Login'
     return (
-      <div>
-        <button className='login-btn' onClick={this.toggleExisting}>{btnText}</button>
+      <div className="login-info">
+        <button className='login-btn switch-btn' onClick={this.toggleExisting}>{btnText}</button>
         { error && <p>{error}</p> }
         {existingUser &&
-      <form>
+      <form className="login-container">
         <input
         className='login-input'
         type="text"
@@ -90,7 +90,7 @@ export class LoginForm extends Component {
         <button className='login-btn' onClick={this.loginUser}>Login</button>
       </form>}
       {!existingUser &&
-      <form>
+      <form className="login-container">
         <input
         className='login-input'
         type="text"
