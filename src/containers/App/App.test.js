@@ -1,6 +1,6 @@
 import React from 'react';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
-import { setBooks, addFavorite, setFavorites, setGenres, addGenre, showStart } from '../../actions';
+import { setBooks, addFavorite, setFavorites, setGenres, addGenre, showStart, logoutUser } from '../../actions';
 import { fetchOnLoad, postFavorite, deleteFavorite} from '../../util/apiCalls';
 import { shallow } from 'enzyme';
 
@@ -123,6 +123,15 @@ describe('App', () => {
     const actionToDispatch = setFavorites([mockBook]);
     const mappedProps = mapDispatchToProps(mockDispatch);
     mappedProps.setFavorites([mockBook]);
+
+    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+  });
+
+  it('it calls dispatch with the logoutUser action', () => {
+    const mockDispatch = jest.fn();
+    const actionToDispatch = logoutUser();
+    const mappedProps = mapDispatchToProps(mockDispatch);
+    mappedProps.logoutUser();
 
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
   });
