@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setBooks, showStart } from '../../actions';
-import { getBooks } from '../../util/apiCalls'
+import { getBooks } from '../../util/apiCalls';
+import PropTypes from 'prop-types';
 
 export class SearchForm extends Component {
   constructor() {
@@ -13,7 +14,7 @@ export class SearchForm extends Component {
   }
 
   handleChange = (e) => {
-    this.setState({[e.target.name]: [e.target.value]});
+    this.setState({[e.target.name]: e.target.value});
   }
 
   handleSearch = (e) => {
@@ -52,3 +53,8 @@ export const mapDispatchToProps = dispatch => (
 )
 
 export default connect(null, mapDispatchToProps)(SearchForm);
+
+SearchForm.propTypes = {
+  setBooks: PropTypes.func.isRequired,
+  showStart: PropTypes.func.isRequired
+}
