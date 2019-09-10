@@ -38,6 +38,9 @@ export class App extends Component {
 
   render() {
     const { currentUser } = this.props;
+    if(currentUser) {
+      localStorage.setItem('user', JSON.stringify(currentUser))
+    }
     return (
       <main className='app'>
       <Route exact path='/login' render={() => currentUser ? <Redirect to='/' /> : <LoginForm /> } />
