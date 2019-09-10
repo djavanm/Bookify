@@ -1,23 +1,24 @@
 @font-face {
-  font-family: 'Cereal-medium';
-  src: url(./AirbnbCereal-Medium.ttf)
+  font-family: "Cereal-medium";
+  src: url(./AirbnbCereal-Medium.ttf);
 }
 
 @font-face {
-  font-family: 'Cereal-light';
-  src: url(./AirbnbCereal-Medium.ttf)
+  font-family: "Cereal-light";
+  src: url(./AirbnbCereal-Medium.ttf);
 }
 
 @font-face {
-  font-family: 'Cereal-ExtraBold';
-  src: url(./AirbnbCereal-ExtraBold.ttf)
+  font-family: "Cereal-ExtraBold";
+  src: url(./AirbnbCereal-ExtraBold.ttf);
 }
 
-$font-light: 'Cereal-light';
-$font-medium: 'Cereal-medium';
-$font-bold: 'Cereal-ExtraBold';
+$font-light: "Cereal-light";
+$font-medium: "Cereal-medium";
+$font-bold: "Cereal-ExtraBold";
 
-$primary: #47D6CF;
-$secondary: #FFFFFF;
-$dark: #222D47;
-$light: #F7F7F7;
+$primary: #47d6cf;
+$secondary: #ffffff;
+$dark: #222d47;
+$light: #f7f7f7;
+$error: #b70107;
