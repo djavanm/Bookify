@@ -4,6 +4,38 @@ import { setBooks, addFavorite, setFavorites, setGenres, addGenre, showStart } f
 import { fetchOnLoad, postFavorite, deleteFavorite} from '../../util/apiCalls';
 import { shallow } from 'enzyme';
 
+jest.mock('../../util/apiCalls');
+
+fetchOnLoad.mockImplementation(() => {
+  return Promise.resolve({
+    id: 1,
+    book_id: 1,
+    author_name: 'Djavan',
+    book_name: 'How to do apiCalls, version 1',
+    artwork_url: 'image string that goes here',
+    release_date: '9999',
+    description: 'The description on this is so descriptive',
+    primary_genre_name: 'Loud'
+  })
+});
+
+postFavorite.mockImplementation(() => {
+  return Promise.resolve({
+    id: 1,
+    book_id: 1,
+    author_name: 'Djavan',
+    book_name: 'How to do apiCalls, version 1',
+    artwork_url: 'image string that goes here',
+    release_date: '9999',
+    description: 'The description on this is so descriptive',
+    primary_genre_name: 'Loud'
+  })
+});
+
+deleteFavorite.mockImplementation(() => {
+  return Promise.resolve(1)
+});
+
 describe('App', () => {
   let wrapper;
   const currentUserMock = {
@@ -128,10 +160,17 @@ describe('App', () => {
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
   });
 
-  it.skip('should call postFavorite when toggleFavorite is given a false value', async () => {
-    const postFavorite = jest.fn();
+  it('should call postFavorite when toggleFavorite is given a false value', async () => {
     wrapper.instance().toggleFavorite(mockBook, false);
     expect(postFavorite).toHaveBeenCalled();
+  });
+  it('should call deleteFavorite when toggleFavorite is given a false value', async () => {
+    wrapper.instance().toggleFavorite(mockBook, true);
+    expect(deleteFavorite).toHaveBeenCalled();
+  });
+
+  it('should call fetchOnLoad when mounting', () => {
+    expect(fetchOnLoad).toHaveBeenCalled();
   });
 
 });
