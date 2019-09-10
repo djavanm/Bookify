@@ -54,15 +54,6 @@ describe('Nav', () => {
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
   });
 
-  it('it calls dispatch with the logoutUser action', () => {
-    const mockDispatch = jest.fn();
-    const actionToDispatch = logoutUser();
-    const mappedProps = mapDispatchToProps(mockDispatch);
-    mappedProps.logoutUser();
-
-    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
-  });
-
   it('mapStateToProps should grab the props it needs', () => {
     const expected = {
       genres: genresMock

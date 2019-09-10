@@ -6,7 +6,7 @@ import LoginForm from '../LoginForm/LoginForm';
 import BookDetails from '../../components/BookDetails/BookDetails';
 import { fetchOnLoad, postFavorite, deleteFavorite} from '../../util/apiCalls';
 import { bindActionCreators } from 'redux';
-import { setBooks, addFavorite, setFavorites, setGenres, addGenre, showStart } from '../../actions';
+import { setBooks, addFavorite, setFavorites, setGenres, addGenre, showStart, logoutUser } from '../../actions';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -36,15 +36,24 @@ export class App extends Component {
     }
   }
 
+  logoutCurrentUser = () => {
+    const { logoutUser } = this.props;
+    localStorage.removeItem('user')
+    logoutUser()
+  }
+
   render() {
     const { currentUser } = this.props;
+    if(currentUser) {
+      localStorage.setItem('user', JSON.stringify(currentUser))
+    }
     return (
       <main className='app'>
       <Route exact path='/login' render={() => currentUser ? <Redirect to='/' /> : <LoginForm /> } />
-      <Route exact path='/' render={() => <Nav currentUser={currentUser}/>} />
+      <Route exact path='/' render={() => <Nav currentUser={currentUser} logoutCurrentUser={this.logoutCurrentUser}/>} />
       <Route exact path='/' render={() => <SearchForm /> } />
       <Route exact path='/' render={() => <BookContainer all={true} toggleFavorite={this.toggleFavorite} /> } />
-      <Route exact path='/my-collection' render={() => currentUser ? <Nav home={true} currentUser={currentUser} /> : <Redirect to='/' /> } />
+      <Route exact path='/my-collection' render={() => currentUser ? <Nav home={true} currentUser={currentUser} logoutCurrentUser={this.logoutCurrentUser} /> : <Redirect to='/' /> } />
       <Route exact path='/my-collection' render={() => currentUser ? <BookContainer all={false} toggleFavorite={this.toggleFavorite} /> : <Redirect to='/' /> } />
       <Route path='/book/:id' render={({ match }) => {
           let targetBook = this.props.currentBooks.find(book => book.book_id === parseInt(match.params.id));
@@ -65,7 +74,7 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch => (
-  bindActionCreators({ setBooks, addFavorite, setFavorites, setGenres, addGenre, showStart }, dispatch)
+  bindActionCreators({ setBooks, addFavorite, setFavorites, setGenres, addGenre, showStart, logoutUser }, dispatch)
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
@@ -79,4 +88,5 @@ App.propTypes = {
   setGenres: PropTypes.func.isRequired,
   addGenre: PropTypes.func.isRequired,
   showStart: PropTypes.func.isRequired,
+  logoutUser: PropTypes.func.isRequired
 }

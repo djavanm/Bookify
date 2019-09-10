@@ -40,7 +40,6 @@ exports[`Nav should match the snapshot with the data passed through 1`] = `
       </Link>
       <button
         className="nav-btn loggedIn-btn"
-        onClick={[MockFunction]}
       >
         Logout
       </button>
