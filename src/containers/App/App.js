@@ -9,6 +9,7 @@ import { bindActionCreators } from 'redux';
 import { setBooks, addFavorite, setFavorites, setGenres, addGenre, showStart } from '../../actions';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export class App extends Component {
 
@@ -68,3 +69,14 @@ export const mapDispatchToProps = dispatch => (
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+App.propTypes = {
+  currentBooks: PropTypes.array.isRequired,
+  currentUser: PropTypes.object,
+  favorites: PropTypes.array.isRequired,
+  setBooks: PropTypes.func.isRequired,
+  setFavorites: PropTypes.func.isRequired,
+  setGenres: PropTypes.func.isRequired,
+  addGenre: PropTypes.func.isRequired,
+  showStart: PropTypes.func.isRequired,
+}
