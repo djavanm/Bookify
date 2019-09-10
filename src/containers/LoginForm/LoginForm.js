@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { setUser, setFavorites, setGenres } from '../../actions';
 import { getFavorites } from '../../util/apiCalls';
+import PropTypes from 'prop-types';
 
 
 export class LoginForm extends Component {
@@ -128,3 +129,9 @@ export const mapDispatchToProps = dispatch => (
 );
 
 export default connect(null, mapDispatchToProps)(LoginForm);
+
+LoginForm.propTypes = {
+  setUser: PropTypes.func.isRequired,
+  setFavorites: PropTypes.func.isRequired,
+  setGenres: PropTypes.func.isRequired
+}

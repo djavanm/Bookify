@@ -3,6 +3,7 @@ import Book from '../Book/Book'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { showStart, showNext, showPrevious } from '../../actions';
+import PropTypes from 'prop-types';
 
 const getTenBooks = (currentBooks, searchFilter) => {
   return currentBooks.slice(searchFilter.start, searchFilter.end)
@@ -45,3 +46,13 @@ export const mapDispatchToProps = dispatch => (
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookContainer);
+
+BookContainer.propTypes = {
+  books: PropTypes.array.isRequired,
+  favorites: PropTypes.array.isRequired,
+  genreFilter: PropTypes.string.isRequired,
+  searchFilter: PropTypes.object.isRequired,
+  showStart: PropTypes.func.isRequired,
+  showNext: PropTypes.func.isRequired,
+  showPrevious: PropTypes.func.isRequired
+}

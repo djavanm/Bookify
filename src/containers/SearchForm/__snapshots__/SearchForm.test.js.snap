@@ -8,7 +8,7 @@ exports[`SearchForm should match the snapshot with the data passed through 1`] =
     className="search-input"
     name="searchInput"
     onChange={[Function]}
-    placeholder="Audiobook or Author"
+    placeholder="Enter an Audiobook or Author"
     type="text"
     value=""
   />
