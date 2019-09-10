@@ -131,7 +131,7 @@ export const mapDispatchToProps = dispatch => (
 export default connect(null, mapDispatchToProps)(LoginForm);
 
 LoginForm.propTypes = {
-  setUser: PropTypes.func.isRequired,
-  setFavorites: PropTypes.func.isRequired,
-  setGenres: PropTypes.func.isRequired
+  setUser: PropTypes.func,
+  setFavorites: PropTypes.func,
+  setGenres: PropTypes.func
 }

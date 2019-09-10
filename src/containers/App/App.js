@@ -88,5 +88,5 @@ App.propTypes = {
   setGenres: PropTypes.func.isRequired,
   addGenre: PropTypes.func.isRequired,
   showStart: PropTypes.func.isRequired,
-  logoutUser: PropTypes.func.isRequired
+  logoutUser: PropTypes.func
 }
