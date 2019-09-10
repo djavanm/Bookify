@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { logoutUser, showGenreFilter, showAllFilter} from '../../actions';
 import { bindActionCreators } from 'redux';
 import { FaLeaf } from "react-icons/fa";
+import PropTypes from 'prop-types';
 
 export const Nav = ({ currentUser, logoutUser, home, genres, showGenreFilter, showAllFilter }) => {
   const currentGenres = genres.map((genre, index) => {
@@ -34,3 +35,12 @@ export const mapDispatchToProps = dispatch => (
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+
+Nav.propTypes = {
+  genres: PropTypes.array,
+  currentUser: PropTypes.object,
+  home: PropTypes.bool.isRequired,
+  logoutUser: PropTypes.func.isRequired,
+  showGenreFilter: PropTypes.func.isRequired,
+  showAllFilter: PropTypes.func.isRequired
+}
