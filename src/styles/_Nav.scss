@@ -1,5 +1,5 @@
 .header-title {
-  font-family: 'Cereal-ExtraBold';
+  font-family: "Cereal-ExtraBold";
 }
 
 .show-btn {
@@ -7,20 +7,27 @@
   margin-right: auto;
 }
 
+.nav-buttons {
+  margin: 20px;
+}
 
 .nav-btn {
   height: 40px;
-  padding: 5px;
   margin: 10px;
   font-family: $font-bold;
   background-color: $secondary;
-  font-size: 16px;
-  display: inline-block;
+  font-size: 0.9em;
+  width: 200px;
 }
+
+.loggedIn-btn {
+  width: 130px;
+}
+
 .nav-btn:hover {
   background: $dark;
   color: $secondary;
-  box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.75);
 }
 
 .show-btn:hover:disabled {
@@ -30,15 +37,13 @@
 
 nav {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
+  height: 130px;
+  justify-content: space-between;
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 3.5em;
+  margin: 20px;
   text-align: center;
 }
 

@@ -12,20 +12,17 @@ export const Nav = ({ currentUser, logoutUser, home, genres, showGenreFilter, sh
   const showAll = <button className='nav-btn' key={0} onClick={() => showAllFilter()}>Show All</button>;
   const allGenres = [showAll, ...currentGenres];
   return (
-    <>
-    <h1 className='header-title'>Bookify <FaLeaf color='black' size={40} /> </h1>
-
     <nav>
+    <h1 className='header-title'>Bookify <FaLeaf color='black' size={40} /> </h1>
     <section className='nav-buttons'>
     { !currentUser && <Link to='/login'><button className='nav-btn'> SIGN IN </button></Link> }
     { currentUser && <h2 className='nav-welcome'> Welcome, { currentUser.name } </h2> }
-    { currentUser && !home && <Link className='link' to='/my-collection'><button className='nav-btn'>Show Favorites</button></Link> }
+    { currentUser && !home && <Link className='link' to='/my-collection'><button className='nav-btn loggedIn-btn'>Show Favorites</button></Link> }
     { currentUser && home && <Link className='link' to='/'><button className='nav-btn'>Search Audiobooks</button></Link> }
-    { currentUser && <button className='nav-btn' onClick={logoutUser}>Logout</button> }
+    {currentUser && <button className='nav-btn loggedIn-btn' onClick={logoutUser}>Logout</button> }
     </section>
     { currentUser && home && <div className='all-genres'>{ allGenres }</div> }
     </nav>
-    </>
   )
 }
 export const mapStateToProps = state => ({
