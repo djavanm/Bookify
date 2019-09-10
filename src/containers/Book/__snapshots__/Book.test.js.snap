@@ -12,27 +12,32 @@ exports[`Book should 1`] = `
   <section
     className="card-info"
   >
-    <Link
-      className="link"
-      to="/book/42"
+    <p
+      className="book-name"
     >
-      <p
-        className="book-name"
-      >
-        Good Omens
-      </p>
-    </Link>
+      Good Omens
+    </p>
     <p
       className="author-name"
     >
       Neil Gaiman
     </p>
+    <Link
+      className="link"
+      to="/book/42"
+    >
+      <p
+        className="details-link"
+      >
+        Click for details
+      </p>
+    </Link>
   </section>
   <button
     className="btn"
     onClick={[Function]}
   >
-    Fav
+    Favorite
   </button>
 </article>
 `;

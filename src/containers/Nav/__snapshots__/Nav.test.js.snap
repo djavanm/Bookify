@@ -1,44 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Nav should match the snapshot with the data passed through 1`] = `
-<nav>
-  <h1
-    className="header-title"
-  >
-    Bookify 
-    <FaLeaf
-      color="black"
-      size={40}
-    />
-     
-  </h1>
-  <section
-    className="nav-buttons"
-  >
-    <h2
-      className="nav-welcome"
+<Fragment>
+  <nav>
+    <h1
+      className="header-title"
     >
-       Welcome, 
-      Sam
+      Bookify 
+      <FaLeaf
+        color="#07804B"
+        size={40}
+      />
        
-    </h2>
-    <Link
-      className="link"
-      to="/"
+    </h1>
+    <section
+      className="nav-buttons"
     >
-      <button
-        className="nav-btn"
+      <h2
+        className="nav-welcome"
       >
-        Search Audiobooks
+         Welcome,
+        <span
+          className="user-name"
+        >
+           
+          Sam
+        </span>
+          
+      </h2>
+      <Link
+        className="link"
+        to="/"
+      >
+        <button
+          className="nav-btn"
+        >
+          Search Audiobooks
+        </button>
+      </Link>
+      <button
+        className="nav-btn loggedIn-btn"
+        onClick={[MockFunction]}
+      >
+        Logout
       </button>
-    </Link>
-    <button
-      className="nav-btn loggedIn-btn"
-      onClick={[MockFunction]}
-    >
-      Logout
-    </button>
-  </section>
+    </section>
+  </nav>
   <div
     className="all-genres"
   >
@@ -64,5 +71,5 @@ exports[`Nav should match the snapshot with the data passed through 1`] = `
       Comedy
     </button>
   </div>
-</nav>
+</Fragment>
 `;
