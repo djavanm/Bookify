@@ -21,7 +21,6 @@ describe('currentUser reducer', () => {
     };
 
     const result = currentUser(undefined, actionObj);
-
     expect(result).toEqual(expected);
   });
 
@@ -35,4 +34,3 @@ describe('currentUser reducer', () => {
     expect(result).toEqual(null);
   });
 });
-

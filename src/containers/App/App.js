@@ -4,7 +4,7 @@ import BookContainer from '../../containers/BookContainer/BookContainer';
 import SearchForm from '../SearchForm/SearchForm';
 import LoginForm from '../LoginForm/LoginForm';
 import BookDetails from '../../components/BookDetails/BookDetails';
-import { fetchOnLoad, postFavorite, deleteFavorite} from '../../util/apiCalls';
+import { fetchOnLoad, postFavorite, deleteFavorite, getFavorites} from '../../util/apiCalls';
 import { bindActionCreators } from 'redux';
 import { setBooks, addFavorite, setFavorites, setGenres, addGenre, showStart, logoutUser } from '../../actions';
 import { connect } from 'react-redux';
@@ -14,10 +14,13 @@ import PropTypes from 'prop-types';
 export class App extends Component {
 
   componentDidMount() {
-    const { setBooks, showStart } = this.props;
+    const { setBooks, showStart , currentUser, setFavorites, setGenres } = this.props;
     fetchOnLoad()
       .then(data => setBooks(data))
-      .then((data) => showStart({start: 0, end: 10, length: data.foundBooks.length}))
+      .then(data => showStart({start: 0, end: 10, length: data.foundBooks.length}))
+      .then(() => currentUser ? getFavorites(currentUser.id) : null)
+      .then(data => data ? setFavorites(data.favorites) : null)
+      .then(data => data ? setGenres(data.foundFavorites) : null  )
       .catch(error => console.log(error))
   }
 
@@ -38,8 +41,8 @@ export class App extends Component {
 
   logoutCurrentUser = () => {
     const { logoutUser } = this.props;
-    localStorage.removeItem('user')
-    logoutUser()
+    localStorage.removeItem('user');
+    logoutUser();
   }
 
   render() {
