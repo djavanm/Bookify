@@ -45,7 +45,3 @@ This was a group project for Mod Three at Turing. The major focus was to further
 #### Updated Wireframe
 
 ![image](https://user-images.githubusercontent.com/45364533/64652364-e7680600-d3e0-11e9-8dcb-83b067bbba44.png)
-
-## Tests Snapshot
-
-![image](https://user-images.githubusercontent.com/45364533/64652289-b687d100-d3e0-11e9-8b19-bb0e76a4ef51.png)
